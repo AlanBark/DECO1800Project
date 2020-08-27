@@ -22,17 +22,20 @@ After you make or edit a file, you need to commit it. This will upload
 and start tracking any changes to the file on the current branch.
 
 Nothing you can do on your own computer will break anything on the main
-branch until you commit. You can play around with others code as much as
+branch until you push. You can play around with others code as much as
 you want.
 
 If you still want to use subversion while doing something radical/code 
 breaking, you're probably going to want to branch. We wont have to do this
 for a while.
 
-Committing to master isn't like saving a file. When you commit you are 
+Pushing to master isn't like saving a file. When you push you are 
 saying that this is good enough for a working copy. As an example, don't 
-commit code that doesn't compile. It doens't have to be a finished product,
+push code that doesn't compile. It doens't have to be a finished product,
 it just shouldn't break anything. 
+
+However, you should commit often. Committing doesn't affect the main branch
+until you push it. Commit history will be uploaded when you push.
 
 Each commit should include:
 	- Short header
