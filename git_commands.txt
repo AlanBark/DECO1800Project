@@ -1,0 +1,12 @@
+Command cheat sheet.
+
+git clone url - clones the repository given and adds all files to be tracked
+git pull - updates your local copy
+git push - updates the repositry with your local commits
+git commit - commits that can be viewed on the repositry that haven't been pushed
+git branch - shows all and current branches. This is how you make your own branch
+git merge - merges your current branch with master branch
+git add - adds a file to be tracked by git
+git rm - removes a file from being tracked by git
+git fetch - gets the latest meta data from repository, but doesn't overwrite your own work
+Useful for doing before git pull or for seeing what others have worked.
