@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>The HTML5 Herald</title>
+  <title>Interesting title</title>
   <meta name="description" content="Title">
   <meta name="author" content="test">
 
@@ -12,8 +12,9 @@
 </head>
 
 <body>
-  <p>if you see this it worked</p>
-  <p>comment your name and make a test commit</p>
+  <p>if you see this on deco1800teams-ufc03t04.uqcloud.net it worked</p>
+  <p>comment your name here in index.php and make a test commit</p>
+  <p>the team zone already has a clone of master checked out</p>
   <p>-Alec</p>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="js/leaflet.js"></script>
