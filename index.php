@@ -13,6 +13,8 @@
 
 <body>
   <p>if you see this it worked</p>
+  <p>comment your name and make a test commit</p>
+  <p>-Alec</p>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="js/leaflet.js"></script>
 </body>
