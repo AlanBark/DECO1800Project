@@ -20,7 +20,7 @@
   <p>-Leo!</p>
   <p>test2 from branch</p>
   <p>-Jacky</p>
-  <p>-test nane</p>
+  <p>-FInal test for today 9/25</p>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="js/leaflet.js"></script>
 </body>
