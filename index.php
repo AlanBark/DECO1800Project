@@ -1,8 +1,8 @@
-<?php include("includes/a_config.php");?>
+<?php include("includes/config.php");?>
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include("includes/head-tag-contents.php");?>
+	<?php include("includes/header.php");?>
 </head>
 <body>
 
