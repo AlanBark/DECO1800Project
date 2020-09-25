@@ -17,7 +17,7 @@
   <p>the team zone already has a clone of master checked out</p>
   <p>-Alec</p>
   <p>-Leo</p>
-  <p>-Test2</p>
+  <p>-Jacky</p>
   <p>-Testname</p>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="js/leaflet.js"></script>
