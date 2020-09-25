@@ -1,31 +1,27 @@
- <!doctype html>
-<!-- Default copy paste html -->
-<html lang="en">
+<?php include("includes/a_config.php");?>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-
-  <title>Interesting title</title>
-  <meta name="description" content="Title">
-  <meta name="author" content="test">
-
-  <link rel="stylesheet" href="css/!!!!!!">
+	<?php include("includes/head-tag-contents.php");?>
 </head>
-
 <body>
-  <p>if you see this on deco1800teams-ufc03t04.uqcloud.net it worked</p>
-  <p>comment your name here in index.php and make a test commit</p>
-  <p>the team zone already has a clone of master checked out</p>
-<<<<<<< HEAD
-  <p>Test merge from test branch to main<p/>
-=======
-  <p>test from yeebranch2</p>
->>>>>>> 723ed83a002372ca253fb4d162eb23dafddb70fb
-  <p>-Alec</p>
-  <p>-Leo!</p>
-  <p>test2 from branch</p>
-  <p>-Jacky</p>
-  <p>-FInal test for today 9/25</p>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="js/leaflet.js"></script>
+
+<?php include("includes/design-top.php");?>
+<?php include("includes/navigation.php");?>
+
+<div class="container" id="main-content">
+	<h2>Welcome to my website!</h2>
+	<p>Some content goes here! Let's go with the classic "lorem ipsum."</p>
+
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</p>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</p>
+</div>
+
+<?php include("includes/footer.php");?>
+
 </body>
 </html>
