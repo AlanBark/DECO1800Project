@@ -17,7 +17,8 @@
   <p>the team zone already has a clone of master checked out</p>
   <p>test from yeebranch</p>
   <p>-Alec</p>
-  <p>-Leo</p>
+  <p>-Leo!</p>
+  <p>test2 from branch</p>
   <p>-Jacky</p>
   <p>-Testname</p>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
