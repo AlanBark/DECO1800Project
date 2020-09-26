@@ -3,6 +3,7 @@
 <html>
 <head>
 	<?php include("includes/header.php");?>
+    <?php include("includes/api-interaction.php");?>
 </head>
 <body>
 
@@ -10,6 +11,7 @@
 
 <div class="container" id="main-content">
 	<h2>Interactive Map</h2>
+    <?php echo getMonth(2010);?>
 </div>
 <?php include("includes/footer.php");?>
 
