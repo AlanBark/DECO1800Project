@@ -44,4 +44,23 @@ function getSuburb($year) {
     return getData($resourceid);
 }
 
+// returns average month data over 10 years, where month is an int
+// between 0 and 11 inclusive
+function getMonthAverage($month) {
+    if ($month > 11 || $month < 0) {
+        return FALSE;
+    }
+
+    $total = 0;
+
+    for ($year = 2010; $year <= 2019; $year++) {
+        $data = getMonth($year);
+        $total += $data['result']['records'][$month]['Transactions'];
+    }
+
+    return floor($total/10);
+    
+}
+
+
 ?>
