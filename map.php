@@ -13,7 +13,7 @@
 	<h2>Interactive Map</h2>
     <?php
     echo "<pre>";
-    $test = getAllMonths();
+    $test = getAllSuburbs();
     print_r($test);
     ?>
 </div>
