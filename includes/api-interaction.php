@@ -1,10 +1,11 @@
 <?php
 // returns data from given resource id as a PHP object
 function getData($resourceid, $arguments = '') {
-    $api_url = "https://www.data.qld.gov.au/api/3/action/datastore_search?".$arguments."resource_id".$resourceid;
+    $api_url = "https://www.data.qld.gov.au/api/3/action/datastore_search_sql?sql=SELECT%20*%20from%20%22"
+                    .$resourceid."%22%20".$arguments;
     return json_decode(file_get_contents($api_url), true);
 }
-
+//https://www.data.qld.gov.au/api/3/action/datastore_search_sql?sql=SELECT%20*%20from%20%22b85ecabf-7849-422d-b44d-49c54a3a7c8e%22%20WHERE%20%22Transactions%22%3E10
 // gets data per year from month data
 function getMonth($year) {
 
@@ -27,6 +28,7 @@ function getMonth($year) {
 
 // gets data per year from suburb data
 function getSuburb($year) {
+    $TRANSACTION_CUTOFF = 25;
     // Marriage data per suburb with databases per year
     $suburbData = array(
         2010 => '166fa3e9-bce5-4615-aaa1-acf587ac3216',
@@ -41,7 +43,7 @@ function getSuburb($year) {
         2019 => 'b85ecabf-7849-422d-b44d-49c54a3a7c8e'
     );
     $resourceid = $suburbData[$year];
-    return getData($resourceid);
+    return getData($resourceid, 'WHERE "Transactions">'.$TRANSACTION_CUTOFF);
 }
 
 function getAllMonths() {
@@ -76,23 +78,32 @@ function getAllSuburbs () {
 
     // declare uninitialised array.
     $allData =  Array();
+    $frequency = Array();
 
     // loop over every year and retrieve data
     for ($year = 2010; $year <= 2019; $year++) {
         $data = getSuburb($year);
         
-        // iterate over each suburb
+        // Iterate over each suburb. 
         foreach($data['result']['records'] as $suburb ) {
+            // If suburb exists, add accumulative average
+            // Accumulative average:
+            //      Multiply current average by frequency
+            //      Add result to next number
+            //      Increase frequency by 1
+            //      Divide by frequency
             if (isset($allData[$suburb['Suburb']])) {
-                $allData[$suburb['Suburb']] += $suburb['Transactions'];
+                $temp = $allData[$suburb['Suburb']] * $frequency[$suburb['Suburb']];
+                $temp += $suburb['Transactions'];
+                $frequency[$suburb['Suburb']]++;
+                $temp = ceil($temp / $frequency[$suburb['Suburb']]);
+                $allData[$suburb['Suburb']] = $temp;
+            // If suburb does not exist, set frequency to 1 and Initialise array element
             } else {
+                $frequency[$suburb['Suburb']] = 1;
                 $allData[$suburb['Suburb']] = $suburb['Transactions'];
-            } 
+            }
         }
-    }
-
-    foreach($allData as $suburb => $value) {
-        $allData[$suburb] = floor($value / 10);
     }
     arsort($allData);
     return $allData;
