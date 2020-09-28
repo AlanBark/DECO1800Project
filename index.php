@@ -9,19 +9,26 @@ error_reporting(E_ALL);?>
 </head>
 <body>
 
-<?php include("includes/design-top.php");?>
+<!--<?php include("includes/design-top.php");?>-->
 <?php include("includes/navigation.php");?>
 
-<div class="container" id="main-content">
-	<h2>Website Home page<Title></Title></h2>
-	<p>Some content goes here</p>
+<div class="container" id="home-main-content">
 
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
+
+	<div class="full-image-background"></div>
+
+	<section class="home-info-container">
+		<section class="home-info-text">
+			<h1>Save The Date</h1>
+
+			<p>Wedding planning can be stressful, however, we are here to help you!</p>
+
+			<p>Browse our planning tools to help you organise your big day or click the link below view our interactive map displaying past wedding statistics.</p>
+
+			<a href="planning.php" class='btn'>Get Started Now</a>
+		</section>
+	</section>
+
 </div>
 
 <?php include("includes/footer.php");?>
