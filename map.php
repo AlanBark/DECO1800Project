@@ -11,6 +11,11 @@
 
 <div class="container" id="main-content">
 	<h2>Interactive Map</h2>
+    <?php
+    echo "<pre>";
+    $test = getAllMonths();
+    print_r($test);
+    ?>
 </div>
 <?php include("includes/footer.php");?>
 

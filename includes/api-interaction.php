@@ -40,27 +40,35 @@ function getSuburb($year) {
         2018 => '340a2665-2446-4794-9edc-85bc8e9d9f89',
         2019 => 'b85ecabf-7849-422d-b44d-49c54a3a7c8e'
     );
-    $resourceid = $suburbData[year];
+    $resourceid = $suburbData[$year];
     return getData($resourceid);
 }
 
-// returns average month data over 10 years, where month is an int
-// between 0 and 11 inclusive
-function getMonthAverage($month) {
-    if ($month > 11 || $month < 0) {
-        return FALSE;
+function getAllMonths() {
+
+    // uninitialised array to return
+    $allData = Array();
+
+    // initialise array. next for loop has to add to something.
+    for ($i = 0; $i < 12; $i++) {
+        $allData[$i] = 0;
     }
 
-    $total = 0;
-
+    // loop over every year and retrieve data
     for ($year = 2010; $year <= 2019; $year++) {
         $data = getMonth($year);
-        $total += $data['result']['records'][$month]['Transactions'];
+        // loop over every month and add to array element
+        for ($month = 0; $month < 12; $month++) {
+            $allData[$month] 
+                += $data['result']['records'][$month]['Transactions'];
+        }
     }
-
-    return floor($total/10);
     
+    // yes i know another for loop
+    // averages data
+    for ($i = 0; $i < 12; $i++) {
+        $allData[$i] = floor($allData[$i] / 10);
+    }
+    return $allData;
 }
-
-
 ?>
