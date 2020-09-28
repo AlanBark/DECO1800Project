@@ -1,7 +1,7 @@
 <?php
 // returns data from given resource id as a PHP object
 function getData($resourceid) {
-    $api_url = "https://www.data.qld.gov.au/api/3/action/datastore_search?resource_id=".$resourceid;
+    $api_url = "https://www.data.qld.gov.au/api/3/action/datastore_search?resource_id=".$resourceid."&limit=630";
     return json_decode(file_get_contents($api_url), true);
 }
 
@@ -69,6 +69,32 @@ function getAllMonths() {
     for ($i = 0; $i < 12; $i++) {
         $allData[$i] = floor($allData[$i] / 10);
     }
+    return $allData;
+}
+
+function getAllSuburbs () {
+
+    // declare uninitialised array.
+    $allData =  Array();
+
+    // loop over every year and retrieve data
+    for ($year = 2010; $year <= 2019; $year++) {
+        $data = getSuburb($year);
+        
+        // iterate over each suburb
+        foreach($data['result']['records'] as $suburb ) {
+            if (isset($allData[$suburb['Suburb']])) {
+                $allData[$suburb['Suburb']] += $suburb['Transactions'];
+            } else {
+                $allData[$suburb['Suburb']] = $suburb['Transactions'];
+            } 
+        }
+    }
+
+    foreach($allData as $suburb => $value) {
+        $allData[$suburb] = floor($value / 10);
+    }
+    arsort($allData);
     return $allData;
 }
 ?>
