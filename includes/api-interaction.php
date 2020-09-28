@@ -1,7 +1,7 @@
 <?php
 // returns data from given resource id as a PHP object
-function getData($resourceid) {
-    $api_url = "https://www.data.qld.gov.au/api/3/action/datastore_search?resource_id=".$resourceid."&limit=630";
+function getData($resourceid, $arguments = '') {
+    $api_url = "https://www.data.qld.gov.au/api/3/action/datastore_search?".$arguments."resource_id".$resourceid;
     return json_decode(file_get_contents($api_url), true);
 }
 
@@ -67,7 +67,7 @@ function getAllMonths() {
     // yes i know another for loop
     // averages data
     for ($i = 0; $i < 12; $i++) {
-        $allData[$i] = floor($allData[$i] / 10);
+        $allData[$i] = ceil($allData[$i] / 10);
     }
     return $allData;
 }
