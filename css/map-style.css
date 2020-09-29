@@ -7,3 +7,18 @@
 #btnMap {
     margin-top: 20px;
 }
+
+#loading {
+    position: fixed;
+	width: 100%;
+	height: 100%;
+	background: white url(../images/loading.gif) no-repeat center center;
+	top: 0;
+	left: 0;
+	transition: all 0.5s ease;
+}
+
+map.loaded #loading {
+    opacity: 0;
+    visibility: hidden;
+}
