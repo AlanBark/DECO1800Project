@@ -28,7 +28,7 @@ function getMonth($year) {
 
 // gets data per year from suburb data
 function getSuburb($year) {
-    $TRANSACTION_CUTOFF = 25;
+    $TRANSACTION_CUTOFF = 1;
     // Marriage data per suburb with databases per year
     $suburbData = array(
         2010 => '166fa3e9-bce5-4615-aaa1-acf587ac3216',
