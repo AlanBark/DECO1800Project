@@ -24,11 +24,9 @@ function initialiseMap($data) {
         $count++;
     }
     $newJson = json_encode($allSuburbs);
-    file_put_contents('../tmp/filtered.json', $newJson);
+    file_put_contents('../tmp/filtered.geojson', $newJson);
 
-    // @TODO call this file with parameters from map filter.
-    // initialise map
-    echo 'createMap();';
+    echo "createMap();";
 }
 
 if (isset($_POST['callinitialiseMap'])) {
