@@ -76,15 +76,21 @@
     <script>
         $(document).ready(function() {
             $('#btnMap').click(function() {
-                document.getElementById('map').style.visibility='visible'
+                $("#loading").css("visibility", "visible");
             });
             $.ajax({
                 url: "includes/map-init.php",
                 type: 'post',
                 data: {"callinitialiseMap" : "1"},
                 success: function(response) {
+                    // run response as function
                     var tmp=new Function (response);
                     tmp();
+                    setTimeout(function () {
+                        $("#loading").css("visibility", "hidden");
+                        $("#map").css("visibility", "visible");
+                        $()
+		            }, 20);
                 }
             });
         });
