@@ -1,7 +1,14 @@
 <!--Contains Header data and meta data to be included on each page-->
 
-<!--Sets title to current page title @see /includes/config.php for $PAGE_TITLE-->
+<!--Sets title to current page title @see /includes/config.php for $PAGE_TITLE -->
 <title><?php print $PAGE_TITLE;?></title>
+
+<!--
+<title>Save The Date</title>-->
+
+<!-- Sets icon for browser tab -->
+<link rel="icon" href="" type="image/x-icon"> 
+
 
 <!--Only include metadata on landing page-->
 <?php if ($CURRENT_PAGE == "Index") { ?>

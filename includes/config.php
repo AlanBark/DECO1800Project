@@ -10,7 +10,7 @@
             break;
         case "/map.php":
             $CURRENT_PAGE = "Map"; 
-            $PAGE_TITLE = "Here is a map";
+            $PAGE_TITLE = "Map Page";
             break;
         case "/planning.php":
             $CURRENT_PAGE = "Planning"; 
