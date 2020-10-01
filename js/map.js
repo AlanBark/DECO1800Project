@@ -2,11 +2,38 @@ function createMap () {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWxhbmJhcmsiLCJhIjoiY2tmbmtwamM3MDNqbzJ4cXRmZ2R4aGVxOSJ9.J_cyZxD5QAw8wyOQq-ompA';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/alanbark/ckfmoop0t69xa19qinltagru5', // stylesheet location
+        style: 'mapbox://styles/alanbark/ckfqbb24y0rj519ryeuf99z91', // stylesheet location
         center: [146.5, -23.4], // starting position [lng, lat]
         zoom: 4.6 // starting zoom
     });
 
+    map.on('load', function() {
+
+        map.addSource('filtered-json', {
+            'type' : 'geojson',
+            data: '../tmp/filtered.geojson'
+        });
+
+        map.addLayer(
+            {
+                'id': 'filtered',
+                'type': 'fill' ,
+                'source': 'filtered-json',
+                'paint': {
+                    'fill-color': [
+                        "rgb",
+                        // 73logfrequency gives a nice curve between
+                        // 0 and 255 ish over a range of 3000 frequency
+                        0,
+                        100,
+                        ["floor", ["*", 73, ["log10", ["get", "qld_loca_3"]]]]
+                    ],
+                    'fill-opacity': 0.4
+                }
+            }
+        );
+    });
+    
     // Adapted from https://docs.mapbox.com/mapbox-gl-js/example/mapbox-gl-geocoder-limit-region/
     map.addControl(
         new MapboxGeocoder({
