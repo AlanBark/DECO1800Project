@@ -5,20 +5,18 @@ error_reporting(E_ALL);?>
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include("includes/header.php");?>
+<?php include("includes/header.php");?>
 </head>
-<body>
+<body>s
 
-<!--<?php include("includes/design-top.php");?>-->
 <?php include("includes/navigation.php");?>
+
 
 <div class="container" id="home-main-content">
 
 
-	<div class="full-image-background"></div>
-
-	<section class="home-info-container">
-		<section class="home-info-text">
+	<div class="home-info-container">
+		<div class="home-info-text">
 			<h1>Save The Date</h1>
 
 			<p>Wedding planning can be stressful, however, we are here to help you!</p>
@@ -26,10 +24,12 @@ error_reporting(E_ALL);?>
 			<p>Browse our planning tools to help you organise your big day or click the link below view our interactive map displaying past wedding statistics.</p>
 
 			<a href="planning.php" class='btn'>Get Started Now</a>
-		</section>
-	</section>
+		</div>
+	</div>
 
 </div>
+
+
 
 <?php include("includes/footer.php");?>
 
