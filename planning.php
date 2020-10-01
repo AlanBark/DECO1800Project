@@ -6,20 +6,65 @@
 </head>
 <body>
 
-<?php include("includes/design-top.php");?>
 <?php include("includes/navigation.php");?>
 
-<div class="container" id="main-content">
-	<h2>Website planning page</h2>
-	<p>Some content goes here for planning</p>
 
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
+<div class="planning container" id="main-content">
+	<h2>Planning</h2>
 </div>
+
+	<div id="planning-accordion">
+	<ul>
+
+	<li><div class="section-title"><h3>Checklist</h3></div>
+		<div class="section-content">
+
+	   	</div>
+	</li>
+	
+	<li class="active">
+	    <div class="section-title"><h3>Guestlist</h3></div>
+	    	
+	    <div class="section-content">
+	    	      <p>blah blah blah blah yes yes yes rip rip rip yuck yuck yuck yuck yuck why is this not symmetrical waaaaahhhh cry cry cry 
+	    	      </p>
+
+
+	    </div>
+	</li>
+	
+	<li>
+		<div class="section-title"><h3>Trends</h3></div>
+		<div class="section-content">
+
+
+
+	    </div>
+	</li>
+	
+	<li>
+		<div class="section-title"><h3>Venues</h3></div>
+		<div class="section-content">
+
+
+		</div>    
+	</li>
+	
+	</ul>
+	</div>
+
+</div>
+<script>
+var section = $('li');
+
+function toggleAccordion() {
+  section.removeClass('active');
+  $(this).addClass('active');
+}
+
+section.on('click', toggleAccordion);
+</script>
+
 
 <?php include("includes/footer.php");?>
 
