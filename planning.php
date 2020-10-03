@@ -18,6 +18,17 @@
 
 	<li><div class="section-title"><h3>Checklist</h3></div>
 		<div class="section-content">
+		<div id="checklist">
+  <input id="01" type="checkbox" name="r" value="1" >
+  <label for="01">Task1</label>
+  <input id="02" type="checkbox" name="r" value="2">
+  <label for="02">Task2</label>
+  <input id="03" type="checkbox" name="r" value="3">
+  <label for="03">Task3</label>
+</div>
+
+
+
 
 	   	</div>
 	</li>
