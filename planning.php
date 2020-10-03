@@ -20,11 +20,11 @@
 		<div class="section-content">
 		<div id="checklist">
   <input id="01" type="checkbox" name="r" value="1" >
-  <label for="01">Task1</label>
+  <label for="01">Task</label>
   <input id="02" type="checkbox" name="r" value="2">
-  <label for="02">Task2</label>
+  <label for="02">Task</label>
   <input id="03" type="checkbox" name="r" value="3">
-  <label for="03">Task3</label>
+  <label for="03">Task</label>
 </div>
 
 
