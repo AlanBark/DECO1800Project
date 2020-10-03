@@ -231,3 +231,16 @@ p {
 	opacity: 0;
 	transition: all .25s .1s ease-out;
 }
+
+#checklist {
+	
+	position: relative;
+	
+	display: grid;
+	grid-template-columns: 30px auto;
+	align-items: center;
+}
+
+  
+  
+  
