@@ -10,7 +10,11 @@
 
 <div class="container" id="main-content">
 	<h2>Contact Us</h2>
-	<p>Some content goes here for contact</p>
+	
+	<div class="pseudo-contact-form" style="margin: 5%; max-height: 650px">
+		<img src="/images/wedding-table.jpg" style="max-height:500px; height: 100%;">
+		<img src="/images/contact-interface-wide.png" style="padding-left: 10%; max-height:500px; height: 100%;">
+	</div>
 
 
 

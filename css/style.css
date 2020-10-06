@@ -95,6 +95,9 @@ p {
 
 
 
+/* Map Page */
+/*----------------------------------------------------------------------------------*/
+
 #map-filter-section {
 	width: 40%;
 	position: relative;
@@ -153,11 +156,13 @@ p {
 }
 
 
+/* Planning Page */
+/*----------------------------------------------------------------------------------*/
+
 
 #planning-accordion {
 	width: 100%;
 }
-
 
 #planning-accordion ul {
 	display: flex;
@@ -182,14 +187,12 @@ p {
 
 #planning-accordion li:hover {
 	background: #E2E2E2;
-
 }
 
 #planning-accordion li.active {
 	flex: 5;
 	background: #FFFFFF;
 	cursor: default;
-
 }
 
 #planning-accordion li.active h3 {
@@ -228,15 +231,17 @@ p {
 	transition: all .25s .1s ease-out;
 }
 
+
 #checklist {
-	
 	position: relative;
-	
 	display: grid;
 	grid-template-columns: 30px auto;
 	align-items: center;
 }
 
-  
-  
+
+#planning-accordion .pseudo-checklist {
+	max-width: 300px;
+}
+
   
