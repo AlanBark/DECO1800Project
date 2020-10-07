@@ -8,7 +8,7 @@
 
 
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4 ,span{
 	font-family: "Playfair Display", Garamond, Cambria, serif;
 	font-style: italic;
 }
@@ -28,7 +28,7 @@ h4 {
 	font-size: 1.3em;
 }
 
-p {
+p{
 	font-size: 1em;
 }
 
@@ -240,6 +240,25 @@ p {
 	grid-template-columns: 30px auto;
 	align-items: center;
 }
+
+#invitedList span{
+	font-family: "Playfair Display", Garamond, Cambria, serif;
+	font-style: italic;
+
+	font-size:1.3em;
+}
+
+
+	
+  
+ 
+ 
+  
+ 
+ 
+  
+
+  
 
   
   
