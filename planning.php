@@ -3,6 +3,8 @@
 <html>
 <head>
 	<?php include("includes/header.php");?>
+	<script type='text/javascript' src='js/guestlist.js'></script>
+
 </head>
 <body>
 
@@ -36,11 +38,26 @@
 	<li class="active">
 	    <div class="section-title"><h3>Guestlist</h3></div>
 	    	
-	    <div class="section-content">
-	    	      <p>blah blah blah blah yes yes yes rip rip rip yuck yuck yuck yuck yuck why is this not symmetrical waaaaahhhh cry cry cry 
-	    	      </p>
-
-
+	    <div class="section-content">			
+	<div class="wrapper">
+    <header>
+	  
+      <form id="registrar">
+        <input type="text" name="name" placeholder="Invite Someone">
+        <button type="submit" name="submit" value="submit">Submit</button>
+      </form>
+</header>
+		<h2>Invitees</h2>
+	  <div class="main" style="height:650px;overflow-y:auto">
+	  <ul id="invitedList" style="display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;"></ul>
+    </div>
+  </div>
 	    </div>
 	</li>
 	
