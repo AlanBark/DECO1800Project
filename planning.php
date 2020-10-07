@@ -47,7 +47,7 @@
       </form>
 </header>
 		<h2>Invitees</h2>
-	  <div class="main" style="height:650px;overflow-y:auto">
+	  <div class="main" style="height:500px;overflow-y:auto">
 	  <ul id="invitedList" style="display: block;
     list-style-type: disc;
     margin-block-start: 1em;
@@ -57,12 +57,7 @@
     padding-inline-start: 40px;"></ul>
     </div>
   </div>
-	    <div class="section-content">
-			<div class="pseudo-checklist">
-				<img src="/images/checklist.png" style="max-width:350px; width: 100%;">
-			</div>
 
-	    </div>
 
 	</li>
 	

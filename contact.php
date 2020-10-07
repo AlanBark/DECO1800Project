@@ -6,19 +6,18 @@
 </head>
 <body>
 
-<?php include("includes/design-top.php");?>
 <?php include("includes/navigation.php");?>
 
 <div class="container" id="main-content">
-	<h2>Website contact page</h2>
-	<p>Some content goes here for contact</p>
+	<h2>Contact Us</h2>
 
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
+	<div class="pseudo-contact-form" style="margin: 5%; max-height: 650px">
+		<img src="/images/wedding-table.jpg" style="max-height:500px; height: 100%;">
+		<img src="/images/contact-interface-wide.png" style="padding-left: 10%; max-height:500px; height: 100%;">
+	</div>
+
+		<p style="color: #cecece; font-style: italic;">Example contact form interface - still in progress...</p>
+
 </div>
 
 <?php include("includes/footer.php");?>
