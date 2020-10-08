@@ -57,7 +57,7 @@ error_reporting(E_ALL);?>
             </div>
         </div>
     </div>
-		<a class="btn">Get Start Now! &nbsp&nbsp></a>
+		<a class="btn", href="/planning.php">Get Start Now! &nbsp&nbsp></a>
 	</div>
 </div>
 
