@@ -15,7 +15,7 @@
 	<h2>Planning</h2>
 </div>
 
-
+<!--Code insired by https://codepen.io/arjancodes/pen/gbweYB-->
 <div id="planning-accordion">
 
 	<ul>
