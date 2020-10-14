@@ -24,9 +24,9 @@ function createMap () {
                         "rgb",
                         // 73logfrequency gives a nice curve between
                         // 0 and 255 ish over a range of 3000 frequency
+                        ["floor", ["*", 73, ["log10", ["get", "qld_loca_3"]]]],
                         0,
-                        100,
-                        ["floor", ["*", 73, ["log10", ["get", "qld_loca_3"]]]]
+                        0
                     ],
                     'fill-opacity': 0.4
                 }
