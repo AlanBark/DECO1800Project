@@ -25,53 +25,53 @@
 
     <h2>Interactive Map</h2>
 
-    <div id="map-filter-section">
+    <div id="big-box">
 
-    	<button class="map-accordion">Date</button>
-		<div class="panel">
-		  <p>Date panel stuff</p>
+        <div id="map-filter-section">
 
-
-		</div>
-
-		<button class="map-accordion">Price</button>
-		<div class="panel">
-		  <p>Price stuff</p>
+            <button class="map-accordion">Date</button>
+            <div class="panel">
+            <p>Date panel stuff</p>
 
 
-		</div>
+            </div>
 
-		<button class="map-accordion">Weather</button>
-		<div class="panel">
-		  <p>Weather stuff</p>
-
-		</div>
-
-    <script>
-		var acc = document.getElementsByClassName("map-accordion");
-		var i;
-
-		for (i = 0; i < acc.length; i++) {
-		  acc[i].addEventListener("click", function() {
-		    this.classList.toggle("map-accordion-active");
-		    var panel = this.nextElementSibling;
-		    if (panel.style.display === "block") {
-		      panel.style.display = "none";
-		    } else {
-		      panel.style.display = "block";
-		    }
-		  });
-		}
-	</script>
+            <button class="map-accordion">Price</button>
+            <div class="panel">
+            <p>Price stuff</p>
 
 
+            </div>
 
-	</div>
+            <button class="map-accordion">Weather</button>
+            <div class="panel">
+            <p>Weather stuff</p>
 
-    <div id='map'>
-        <div id="loading"></div>
-        <h4>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</h4>
-        <button id="btnMap" type="button" class="btn btn-light">Lets get started</button>
+            </div>
+
+        <script>
+            var acc = document.getElementsByClassName("map-accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("map-accordion-active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                panel.style.display = "none";
+                } else {
+                panel.style.display = "block";
+                }
+            });
+            }
+        </script>
+
+        </div>
+
+        <div id='map'>
+            <div id="loading"></div>
+        </div>
+
     </div>
     <script>
         $(document).ready(function() {
@@ -96,7 +96,6 @@
         });
     </script>
 </div>
-
 
 <?php include("includes/footer.php");?>
 
