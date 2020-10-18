@@ -10,13 +10,25 @@
 
 		<div class="footer-item">
 			<h4>Footer Links:</h4>
+			
+				<ul>
+					<li><a href="index.php">Home</a></li>
+					<li><a href="map.php">Map</a></li>
+					<li><a href="planning.php">Planning</a></li>
+					<li><a href="about.php">About Us</a></li>
+					<li><a href="contact.php">Contact</a></li>
+				</ul>
 
 		</div>
 
 	  	<div class="footer-item">
 	  		<h4>Stay In Touch:</h4>
-		  		<a href="#">Instagram</a>
-		  		<a href="#">Facebook</a>
+
+			  <ul>
+			  	<li><a href="#">Instagram</a></li>
+				<li><a href="#">Facebook</a></li>
+			  </ul>
+		  		
 		</div>
 	</div>
 

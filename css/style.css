@@ -48,6 +48,11 @@ p{
 	padding: 2% 0;
 }
 
+.footer-item ul li {
+	text-decoration: none;
+	list-style-type: none;
+}
+
 .footer-item {
 	flex-grow: 1;
 	height: 120px;
@@ -60,7 +65,6 @@ p{
 
 /* Social media links container*/
 .footer-item:nth-child(3n) {
-	display: block;
 }
 
 
@@ -168,7 +172,7 @@ p{
 
 
 .map-accordion:after {
-	content: '+'; /* Unicode \02795 character for "plus" sign (+) */
+	content: "\002B"; /* Unicode \02795 character for "plus" sign (+) */
 	float: right;
 	margin-right: 10px;
 	font-weight: bold;
@@ -178,8 +182,7 @@ p{
 }
 
 .map-accordion-active:after {
- 	content: "‒"; /* Unicode \2796 character for "minus" sign (-) */
-
+ 	content: "\2212"; /* Unicode \2796 character for "minus" sign (-) */
 }
 
 
@@ -276,4 +279,92 @@ p{
 	font-family: "Playfair Display", Garamond, Cambria, serif;
 	font-style: italic;
 	font-size:1.3em;
+}
+
+
+
+
+
+
+
+/* About Us Page */
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+/* Contact Page */
+/*----------------------------------------------------------------------------------*/
+
+
+#contact-area {
+	display: flex;
+	margin: 3% 0 10% 0;
+}
+
+.contact-item {
+	flex-grow: 1;
+}
+
+.contact-item + .contact-item {
+	margin-left: 10%;
+}
+
+
+
+.contact-form {
+	align-content: center;
+}
+
+.contact-form h4 {
+	padding: 0 0 20px 0;
+	font-size: 1.7em;
+	text-align: center;
+}
+
+.contact-form input[type=text], select, textarea, input[type=number] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  resize: vertical;
+  background-color: #eaeaea;
+}
+
+.contact-form label {
+	margin: 10px 0 0 0;
+}
+
+.contact-btn {
+	background: rgb(228,115,117);
+	color:#ffffff;
+	text-align: center;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border-style: none;
+}
+
+.contact-btn:hover {
+	background: rgb(201, 83, 85);
+}
+
+.contact-form #phone {
+	-moz-appearance: textfield;
+}
+
+.contact-form #phone:webkit-inner-spin-button {
+	display: none;
+}
+
+.contact-form #phone::-webkit-outer-spin-button,
+.contact-form #phone::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
