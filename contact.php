@@ -8,10 +8,8 @@
 
 <?php include("includes/navigation.php");?>
 
-<div class="container" id="main-content">
+<div class="container contact-wrapper" id="main-content">
 	<h2>Contact Us</h2>
-
-
 
 	<div id="contact-area">
 

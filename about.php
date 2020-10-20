@@ -8,7 +8,7 @@
 
 <?php include("includes/navigation.php");?>
 
-<div class="container" id="main-content">
+<div class="container about-wrapper" id="main-content">
 	<h2>About Us</h2>
 	<p>Some content goes here for about</p>
 

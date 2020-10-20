@@ -23,7 +23,6 @@ h3 {
 	font-size: 2.2em;
 }
 
-
 h4 {
 	font-size: 1.3em;
 }
@@ -34,9 +33,58 @@ p{
 
 
 
+/* Navigation Styling */
+/*----------------------------------------------------------------------------------*/
+
+.nav {
+	padding: 2% 0 3% 0;
+	display: flex;
+	width: 80%;
+	margin: 0 10%;
+	list-style: none;
+	text-decoration: none;
+}
+
+.nav .nav-link.active, .nav .show>.nav-link {
+	color: white;
+	background-color: rgb(228,115,117);
+}
+
+.nav .nav-link:hover {
+	color: rgb(228,115,117);
+}
+
+.nav .nav-link.active:hover {
+	color: white;
+	opacity: 0.8;
+}
+
+.nav .nav-link {
+	border-radius: 0.25em;
+	display: inline-block;
+	padding: 0.5em 1em;
+	list-style: none;
+	text-decoration: none;
+	font-size: 1.1em;
+	color: 
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Footer Styling */
+/*----------------------------------------------------------------------------------*/
+
 .footer {
 	background-color: rgb(242, 242, 242);
-    font-size: 0.8em;
+    font-size: 1em;
     text-align: center;
     width: 100%;
 }
@@ -51,11 +99,22 @@ p{
 .footer-item ul li {
 	text-decoration: none;
 	list-style-type: none;
+	padding: 3px;
+	margin: 3px;
+}
+
+.footer-item ul li a {
+	text-decoration: none;
+	list-style-type: none;
+}
+
+.footer-item ul li a:hover {
+	color: rgb(201, 83, 85);
 }
 
 .footer-item {
 	flex-grow: 1;
-	height: 120px;
+	height: auto;
 }
 
 .footer-item + .footer-item {
@@ -63,19 +122,26 @@ p{
 }
 
 
-/* Social media links container*/
+/* Footer social media links container*/
 .footer-item:nth-child(3n) {
+
 }
 
 
 
 
 
-.nav-pills {
-	padding: 2% 0 3% 0;
+
+.about-wrapper, .contact-wrapper {
+	width: 80%;
+	margin: 0 10%;
 }
 
 
+
+
+/* Home Page */
+/*----------------------------------------------------------------------------------*/
 
 .home-info-container {
 	text-align: center;
@@ -185,6 +251,19 @@ p{
  	content: "\2212"; /* Unicode \2796 character for "minus" sign (-) */
 }
 
+.panel select {
+	background-color: red;
+
+}
+
+
+.panel .date{
+	margin: 20px;
+	background-color: red;
+}
+
+
+
 
 /* Planning Page */
 /*----------------------------------------------------------------------------------*/
@@ -261,7 +340,6 @@ p{
 	transition: all .25s .1s ease-out;
 }
 
-
 #checklist {
 	position: relative;
 	display: grid;
@@ -269,11 +347,9 @@ p{
 	align-items: center;
 }
 
-
 #planning-accordion .pseudo-checklist {
 	max-width: 300px;
 }
-
   
 #invitedList span{
 	font-family: "Playfair Display", Garamond, Cambria, serif;
@@ -298,10 +374,8 @@ p{
 
 
 
-
 /* Contact Page */
 /*----------------------------------------------------------------------------------*/
-
 
 #contact-area {
 	display: flex;
@@ -316,8 +390,6 @@ p{
 	margin-left: 10%;
 }
 
-
-
 .contact-form {
 	align-content: center;
 }
@@ -328,18 +400,15 @@ p{
 	text-align: center;
 }
 
-.contact-form input[type=text], select, textarea, input[type=number] {
+.contact-form input[type=text], .contact-form select, .contact-form textarea, .contact-form input[type=number] {
   width: 100%;
-  padding: 10px;
+  padding: 10px 5px ;
   border: none;
   border-radius: 5px;
   box-sizing: border-box;
   resize: vertical;
   background-color: #eaeaea;
-}
-
-.contact-form label {
-	margin: 10px 0 0 0;
+  margin: 5px 0 15px 0 ;
 }
 
 .contact-btn {
