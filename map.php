@@ -30,7 +30,7 @@
         <div id="map-filter-section">
 
             <button class="map-accordion">Date</button>
-            <div class="panel date">
+            <div class="panel">
                 
                 <form action="/action_page.php">
                     <label for="date-input">Select a Date:</label>
