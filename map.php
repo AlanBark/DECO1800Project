@@ -30,16 +30,29 @@
         <div id="map-filter-section">
 
             <button class="map-accordion">Date</button>
-            <div class="panel">
-            <p>Date panel stuff</p>
-
+            <div class="panel date">
+                
+                <form action="/action_page.php">
+                    <label for="date-input">Select a Date:</label>
+                    <input type="date" id="date-input" name="date-input">
+                    <input type="submit">
+                </form>
 
             </div>
 
             <button class="map-accordion">Price</button>
             <div class="panel">
-            <p>Price stuff</p>
 
+                <form action="/action_page.php">
+                    <label for="price-input">Choose a Price:</label>
+                    <select name="price-input" id="price-input" multiple>
+                        <option value="price-low">&#36;</option>
+                        <option value="price-medium">&#36;&#36;</option>
+                        <option value="price-high">&#36;&#36;&#36;</option>
+                    </select>
+                    <br><br>
+                    <input type="submit" value="Submit">
+                    </form>
 
             </div>
 
