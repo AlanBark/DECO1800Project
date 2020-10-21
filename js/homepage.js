@@ -179,7 +179,6 @@ window.addEventListener('load', function() {
     // If it is currently the fifth image showing, switch back to the first image
     rightArrow.addEventListener('click', changeImage);
  
-    var timer = this.setInterval(changeImage, 2000);
  
     function changeImage() {
         if (currentIndex < 4) {
