@@ -1,3 +1,4 @@
+// should only be called after localstorage contains api and raw geojson data
 function createMap () {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWxhbmJhcmsiLCJhIjoiY2tmbmtwamM3MDNqbzJ4cXRmZ2R4aGVxOSJ9.J_cyZxD5QAw8wyOQq-ompA';
     var map = new mapboxgl.Map({
@@ -8,26 +9,32 @@ function createMap () {
     });
 
     map.on('load', function() {
-
         map.addSource('raw-data', {
             'type' : 'geojson',
-            data: localStorage.getItem("rawData")
+            data: JSON.parse(localStorage.getItem("rawData"))[0]
         });
-
+        var data = JSON.parse(localStorage.getItem("apiData")); 
+        var matchExpression = ['match', ['get', 'qld_loca_2']];
+        // iterate over each suburb, set transaction to color, match with 
+        data[0]['result']['records'].forEach(function (suburb) {
+            // Convert the range of data values to a suitable color
+            var red = suburb['Transactions'];
+            if (red > 255) {
+                red = 255;
+            }
+            var color = 'rgb('+ red + ', 0, 0)';
+            
+            matchExpression.push(suburb['Suburb'], color);
+        });
+        // Last value is the default, used where there is no data
+        matchExpression.push('rgba(0, 0, 0, 0)');
         map.addLayer(
             {
-                'id': 'filtered',
+                'id': 'filtered-data',
                 'type': 'fill' ,
-                'source': 'filtered-json',
+                'source': 'raw-data',
                 'paint': {
-                    'fill-color': [
-                        "rgb",
-                        // 73logfrequency gives a nice curve between
-                        // 0 and 255 ish over a range of 3000 frequency
-                        ["floor", ["*", 73, ["log10", ["get", "qld_loca_3"]]]],
-                        0,
-                        0
-                    ],
+                    'fill-color': matchExpression,
                     'fill-opacity': 0.4
                 }
             }
@@ -73,7 +80,6 @@ function getRawDataAjax() {
         type: 'POST', 
         url: './includes/map-init.php', 
         dataType: 'json',
-        cache: true,
         encode: true
     });
 }
@@ -89,22 +95,37 @@ function getApiDataAjax() {
     });
 }
 
-function start_map() {
+function dataExists() {
+    if (localStorage.getItem("rawData") === null || localStorage.getItem("apiData") === null) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function startMap() {
     $(document).ready(function() {
-        
-        var rawData = JSON.parse(localStorage.getItem("rawData"));
-        var apiData = JSON.parse(localStorage.getItem("apiData"));
-        if (apiData && rawData) {
-            //create_map();
+        $("#loading").removeClass("hidden");
+        if (dataExists()) {
+            createMap();
         } else { 
-            
             // call both ajax, run function when finished.
             $.when(getRawDataAjax(), getApiDataAjax()).done(function(raw, api){
-                console.log("got here");
                 localStorage.setItem("rawData", JSON.stringify(raw));
                 localStorage.setItem("apiData", JSON.stringify(api));
-                //create_map();
+                if (dataExists()) {
+                    createMap();
+                } else {
+                    console.error("Something went wrong");
+                }
             });
         }
+        // start fade out after 0.5s, fade out takes 1s, after 1.5s hide loading fully
+        setTimeout(function() {
+            $("#loading").addClass("hidden");
+        }, 500)
+        setTimeout(function() {
+            $("#loading").css("visibility", "hidden");
+        }, 1500)
     });
 }
