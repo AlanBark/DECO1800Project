@@ -9,9 +9,9 @@ function createMap () {
 
     map.on('load', function() {
 
-        map.addSource('filtered-json', {
+        map.addSource('raw-data', {
             'type' : 'geojson',
-            data: '../tmp/filtered.geojson'
+            data: localStorage.getItem("rawData")
         });
 
         map.addLayer(
@@ -65,4 +65,46 @@ function createMap () {
             mapboxgl: mapboxgl
         })
     );
+}
+
+// requests raw geojson file from server
+function getRawDataAjax() {
+    return $.ajax({
+        type: 'POST', 
+        url: './includes/map-init.php', 
+        dataType: 'json',
+        cache: true,
+        encode: true
+    });
+}
+
+// requests data from api.
+function getApiDataAjax() {
+    var data = {resource_id: "b85ecabf-7849-422d-b44d-49c54a3a7c8e"}
+    return $.ajax({
+        url: "https://data.qld.gov.au/api/3/action/datastore_search",
+        data: data,
+        dataType: "jsonp",
+        cache: true
+    });
+}
+
+function start_map() {
+    $(document).ready(function() {
+        
+        var rawData = JSON.parse(localStorage.getItem("rawData"));
+        var apiData = JSON.parse(localStorage.getItem("apiData"));
+        if (apiData && rawData) {
+            //create_map();
+        } else { 
+            
+            // call both ajax, run function when finished.
+            $.when(getRawDataAjax(), getApiDataAjax()).done(function(raw, api){
+                console.log("got here");
+                localStorage.setItem("rawData", JSON.stringify(raw));
+                localStorage.setItem("apiData", JSON.stringify(api));
+                //create_map();
+            });
+        }
+    });
 }

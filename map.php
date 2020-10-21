@@ -7,14 +7,12 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css"/>
-<link rel="stylesheet" href="css/map-style.css" type="text/css"/>
 
 <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 <script type="text/javascript" src="js/map.js"></script>
 <?php include("includes/header.php");?>
-<?php include("includes/api-interaction.php");?>
 </head>
 
 <body>
@@ -87,26 +85,7 @@
 
     </div>
     <script>
-        $(document).ready(function() {
-            $('#btnMap').click(function() {
-                $("#loading").css("visibility", "visible");
-            });
-            $.ajax({
-                url: "includes/map-init.php",
-                type: 'post',
-                data: {"callinitialiseMap" : "1"},
-                success: function(response) {
-                    // run response as function
-                    var tmp=new Function (response);
-                    tmp();
-                    setTimeout(function () {
-                        $("#loading").css("visibility", "hidden");
-                        $("#map").css("visibility", "visible");
-                        $()
-		            }, 20);
-                }
-            });
-        });
+        start_map();
     </script>
 </div>
 
