@@ -79,13 +79,14 @@
 
         </div>
 
-        <div id='map'>
+        <div id='map-container'>
             <div id="loading"></div>
+            <div id='map'></div>
         </div>
 
     </div>
     <script>
-        start_map();
+        startMap();
     </script>
 </div>
 
