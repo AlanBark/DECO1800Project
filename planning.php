@@ -47,7 +47,7 @@
       </form>
 </header>
 		<h2>Invitees</h2>
-	  <div class="main" style="height:500px;overflow-y:auto">
+	  <div class="gs" style="height:500px;overflow-y:auto">
 	  <ul id="invitedList" style="display: block;
     list-style-type: disc;
     margin-block-start: 1em;
