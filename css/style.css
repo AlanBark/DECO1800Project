@@ -347,20 +347,24 @@ p{
 #registrar button{
 	font-family: "Playfair Display", Garamond, Cambria, serif;
 	font-size:0.9em;
-	padding:0.1em;
-}
-#registrar button{
-	border-radius: 5px;
 	
+	padding:0.5em;
+	border-radius: 5px;
 	background-color: rgb(226, 226, 226)
 }
 #registrar input{
+	min-width: 200px;
+	margin-left: 50px;
 	width: fit-content;
-	padding: 0.2em;
+	padding: 0.8em;
 	border-radius: 5px;
+}
+.main label{
+	margin-left: 50px;
 }
 #invitedList li{
 	border-radius: 20px;
+	margin-left:5px;
 }
 #invitedList span{
 	font-family: "Playfair Display", Garamond, Cambria, serif;
@@ -369,8 +373,13 @@ p{
 }
 #invitedList label{
 	margin: 8px;
+	font-style: italic;
 }
-#inveitedList button{
+#invitedList input{
+	margin-left:3px;
+}
+#inveitedList li button{
+	text-transform: capitalize;
 	margin: 3px;
 	border-radius: 5px;
 	font-style: italic;
