@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () =>{
   const form= document.getElementById('registrar');//const because we wont be assigning any different value to form
   const input= form.querySelector('input');//reads what was put into form
-  const mainDiv= document.querySelector('.gs');
+  const mainDiv= document.querySelector('.main');
   const ul= document.getElementById('invitedList');
   
   const div= document.createElement('div');
