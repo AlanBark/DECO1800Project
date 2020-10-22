@@ -32,7 +32,7 @@ window.onload=function(){
 			
             iNow--;
             tab();
-        },6000);
+        },3500);
         oPrev.style.display='none';
         oNext.style.display='none';
     }
