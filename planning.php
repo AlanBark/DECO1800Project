@@ -26,9 +26,17 @@
 		<div class="section-content">
 			<div id="checklist">
 		
-			<button id="add">Add</button><input id="task">
-				<hr>
-			<div id="todos"></div>
+			<ul class="todo-list js-todo-list"></ul>
+    <!-- add the empty state here -->
+    <div class="empty-state">
+	
+      <h2 class="empty-state__title">Add your first todo</h2>
+      <p class="empty-state__description">What do you want to get done?</p>
+    </div>
+    <!-- end -->
+    <form class="todo-form js-form">
+      <input autofocus type="text" aria-label="Enter a new todo item" placeholder="E.g. Buy some flowers" class="js-todo-input">
+    </form>
 			</div>
 	   	</div>
 

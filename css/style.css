@@ -341,6 +341,27 @@ p{
 	align-items: center;
 }
 
+/* Add this below all the other styles */
+
+.empty-state {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	display: none;
+  }
+  
+  .empty-state__title, .empty-state__description {
+	margin-bottom: 5px;
+  }
+
+  .todo-list:empty {
+	display: none;
+  }
+  
+  .todo-list:empty + .empty-state {
+	display: flex;
+  }
+
 #planning-accordion .pseudo-checklist {
 	max-width: 300px;
 }
