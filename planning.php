@@ -4,6 +4,7 @@
 <head>
 	<?php include("includes/header.php");?>
 	<script type='text/javascript' src='js/guestlist.js'></script>
+	<script type='text/javascript' src='js/checklist.js'></script>
 
 </head>
 <body>
@@ -24,12 +25,10 @@
 		
 		<div class="section-content">
 			<div id="checklist">
-				<input id="01" type="checkbox" name="r" value="1" >
-				<label for="01">Task1</label>
-				<input id="02" type="checkbox" name="r" value="2">
-				<label for="02">Task2</label>
-				<input id="03" type="checkbox" name="r" value="3">
-				<label for="03">Task3</label>
+		
+			<button id="add">Add</button><input id="task">
+				<hr>
+			<div id="todos"></div>
 			</div>
 	   	</div>
 
