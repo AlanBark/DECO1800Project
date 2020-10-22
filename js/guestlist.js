@@ -59,9 +59,9 @@ document.addEventListener('DOMContentLoaded', () =>{
   label.appendChild(checkbox);
   li.appendChild(label);
   
-  appendToLi('button', 'textContent', 'edit');
+  appendToLi('button', 'textContent', 'Edit');
   
-  appendToLi('button', 'textContent', 'remove');
+  appendToLi('button', 'textContent', 'Remove');
   
   return li;
   }
@@ -97,9 +97,9 @@ document.addEventListener('DOMContentLoaded', () =>{
       const li = e.target.parentNode;
       const ul = li.parentNode;
     
-      if(button.textContent === 'remove'){
+      if(button.textContent === 'Remove'){
         ul.removeChild(li);}
-      else if(button.textContent === 'edit'){
+      else if(button.textContent === 'Edit'){
         const span= li.firstElementChild;
         const input= document.createElement('input');
         input.type='text';
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         span.textContent= input.value;
         li.insertBefore(span, input);
         li.removeChild(input);
-        button.textContent= 'edit';}
+        button.textContent= 'Edit';}
   }
   });  
     
