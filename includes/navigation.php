@@ -1,4 +1,4 @@
-<div class="container">
+<div>
 	<ul class="nav">
 	  <li class="nav-item">
 	    <a class="nav-link <?php if ($CURRENT_PAGE == "Index") {?>active<?php }?>" href="index.php">Home</a>
