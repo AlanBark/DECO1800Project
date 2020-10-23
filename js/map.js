@@ -55,18 +55,19 @@ function createMap () {
                 'source': 'raw-data',
                 'paint': {
                     'fill-color': matchExpression,
-                    'fill-opacity': [
-                        'case',
-                        ['boolean', ['feature-state', 'hover'], false],
-                        1,
-                        0.6
-                    ]
+                    'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 1, 
+                    ['boolean', ['feature-state', 'selected'], false], 1, 
+                    0.6]
                 }
             }
         );
     });
-
+    
+    // ID's of currently selected and currently hovered suburbs
     var hoveredSuburbID = null;
+    var selectedSuburbID = null;
+
+    // on hover, set feature state "hover" to true.
     map.on('mousemove', 'filtered-data', function (e) {
         map.getCanvas().style.cursor = 'pointer';
         if (e.features.length > 0) {
@@ -102,7 +103,26 @@ function createMap () {
         closeOnClick: false
     })
 
+    // handle user clicks on features
     map.on('click', 'filtered-data', function(e) {
+        // if there's already another suburb selected, deselect it
+        if (selectedSuburbID) {
+            map.setFeatureState(
+                { source: 'raw-data', id: selectedSuburbID },
+                { selected: false}
+            );
+        }
+        selectedSuburbID = e.features[0].id;
+        map.setFeatureState(
+            { source: 'raw-data', id: selectedSuburbID },
+            { selected: true}
+        );
+        map.flyTo({
+            center: e.lngLat,
+            zoom: 9,
+            speed: 0.8
+        })
+        // show popup at click lngLat
         var description = e.features[0].properties.qld_loca_2;
         popup.setLngLat(e.lngLat).setHTML(description).addTo(map);
     });

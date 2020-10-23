@@ -286,6 +286,10 @@ p{
   }
 
 .price-selector:hover {
+    background-color: #e29596;
+}
+
+.price-selector.active {
     background-color: #e47375;
 }
 
