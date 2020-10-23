@@ -104,27 +104,7 @@ function createMap () {
 
     map.on('click', 'filtered-data', function(e) {
         var description = e.features[0].properties.qld_loca_2;
-        var proximity = e.features[0].geometry.coordinates[0][0];
-        console.log(proximity);
-        var data = {
-            access_token: access_token, 
-            limit: 1, 
-            bbox: QLDbbox,
-            proximity: proximity
-        }
-        var coords = [0, 0];
-        $.ajax({
-            type: 'GET',
-            url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+description+'.json',
-            dataType: 'json',
-            data: data,
-            encode: true,
-            success: function(data) {
-                coords[0] = data.features[0].center[0];
-                coords[1] = data.features[0].center[1];
-                popup.setLngLat(coords).setHTML(description).addTo(map);
-            }
-        });
+        popup.setLngLat(e.lngLat).setHTML(description).addTo(map);
     });
 
     // Adapted from https://docs.mapbox.com/mapbox-gl-js/example/mapbox-gl-geocoder-limit-region/
