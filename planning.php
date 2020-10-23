@@ -4,6 +4,7 @@
 <head>
 	<?php include("includes/header.php");?>
 	<script type='text/javascript' src='js/guestlist.js'></script>
+	<script type='text/javascript' src='js/checklist.js'></script>
 
 </head>
 <body>
@@ -24,12 +25,18 @@
 		
 		<div class="section-content">
 			<div id="checklist">
-				<input id="01" type="checkbox" name="r" value="1" >
-				<label for="01">Task1</label>
-				<input id="02" type="checkbox" name="r" value="2">
-				<label for="02">Task2</label>
-				<input id="03" type="checkbox" name="r" value="3">
-				<label for="03">Task3</label>
+		
+			<ul class="todo-list js-todo-list"></ul>
+    <!-- add the empty state here -->
+    <div class="empty-state">
+	
+      <h2 class="empty-state__title">Add your first todo</h2>
+      <p class="empty-state__description">What do you want to get done?</p>
+    </div>
+    <!-- end -->
+    <form class="todo-form js-form">
+      <input autofocus type="text" aria-label="Enter a new todo item" placeholder="E.g. Buy some flowers" class="js-todo-input">
+    </form>
 			</div>
 	   	</div>
 
