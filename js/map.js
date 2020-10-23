@@ -1,6 +1,11 @@
+// used in multiple functions throughout map.
+var access_token = 'pk.eyJ1IjoiYWxhbmJhcmsiLCJhIjoiY2tmbmtwamM3MDNqbzJ4cXRmZ2R4aGVxOSJ9.J_cyZxD5QAw8wyOQq-ompA';
+// rough coordinates of QLD bounding box.
+var QLDbbox =  [137.95, -29.19, 154.44, -9.11];
+
 // should only be called after localstorage contains api and raw geojson data
 function createMap () {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYWxhbmJhcmsiLCJhIjoiY2tmbmtwamM3MDNqbzJ4cXRmZ2R4aGVxOSJ9.J_cyZxD5QAw8wyOQq-ompA';
+    mapboxgl.accessToken = access_token;
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/alanbark/ckfqbb24y0rj519ryeuf99z91', // stylesheet location
@@ -98,13 +103,28 @@ function createMap () {
     })
 
     map.on('click', 'filtered-data', function(e) {
-        var firstCoord = e.features[0].geometry.coordinates[0][0];
-        var length = e.features[0].geometry.coordinates[0].length;
-        var middleCoord = e.features[0].geometry.coordinates[0][Math.round(length / 2)];
-        var centeredLng = ((middleCoord[0] + firstCoord[0]) / 2); 
-        var centeredLat = ((middleCoord[1] + firstCoord[1]) / 2);
         var description = e.features[0].properties.qld_loca_2;
-        popup.setLngLat([centeredLng, centeredLat]).setHTML(description).addTo(map);
+        var proximity = e.features[0].geometry.coordinates[0][0];
+        console.log(proximity);
+        var data = {
+            access_token: access_token, 
+            limit: 1, 
+            bbox: QLDbbox,
+            proximity: proximity
+        }
+        var coords = [0, 0];
+        $.ajax({
+            type: 'GET',
+            url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+description+'.json',
+            dataType: 'json',
+            data: data,
+            encode: true,
+            success: function(data) {
+                coords[0] = data.features[0].center[0];
+                coords[1] = data.features[0].center[1];
+                popup.setLngLat(coords).setHTML(description).addTo(map);
+            }
+        });
     });
 
     // Adapted from https://docs.mapbox.com/mapbox-gl-js/example/mapbox-gl-geocoder-limit-region/
@@ -118,6 +138,8 @@ function createMap () {
             // further limit results to the geographic bounds representing the region of
             // Queensland
             bbox: [137.95, -29.19, 154.44, -9.11],
+
+            placeholder: 'Search QLD suburbs',
             
             // apply a client side filter to further limit results to those strictly within
             // the Queensland region
@@ -138,7 +160,6 @@ function createMap () {
             mapboxgl: mapboxgl
         })
     );
-
     map.addControl(
         new mapboxgl.GeolocateControl({
             positionOptions: {
