@@ -6,8 +6,6 @@
 	font-style: normal;
 }
 
-
-
 h1, h2, h3, h4 ,span{
 	font-family: "Playfair Display", Garamond, Cambria, serif;
 	font-style: italic;
@@ -31,11 +29,8 @@ p{
 	font-size: 1em;
 }
 
-
-
 /* Navigation Styling */
 /*----------------------------------------------------------------------------------*/
-
 .nav {
 	padding: 2% 0 3% 0;
 	display: flex;
@@ -66,9 +61,7 @@ p{
 	list-style: none;
 	text-decoration: none;
 	font-size: 1.1em;
-	color: 
 }
-
 
 /* Footer Styling */
 /*----------------------------------------------------------------------------------*/
@@ -112,28 +105,18 @@ p{
 	margin-left: 2%;
 }
 
-
 /* Footer social media links container*/
 .footer-item:nth-child(3n) {
 
 }
-
-
-
-
-
 
 .about-wrapper, .contact-wrapper {
 	width: 80%;
 	margin: 0 10%;
 }
 
-
-
-
 /* Home Page */
 /*----------------------------------------------------------------------------------*/
-
 .home-info-container {
 	text-align: center;
 	position: absolute;
@@ -154,11 +137,8 @@ p{
 	padding: 24px;
 }
 
-
-
 /* Map Page */
 /*----------------------------------------------------------------------------------*/
-
 #map-container { 
     height: 800px;
     width: 800px; 
@@ -211,7 +191,6 @@ p{
 	font-weight: 500;
 }
 
-
 .mapboxgl-popup {
     max-width: 400px;
     font-family:  "Playfair Display", Garamond, Cambria, serif;
@@ -232,7 +211,7 @@ p{
 }
 
 .map-accordion-active, .map-accordion:hover {
- 	background-color: #ccc; 
+ 	background-color: #e47375; 
 }
 
 .panel {
@@ -243,19 +222,19 @@ p{
     transition: max-height 0.3s ease-out;
 }
 
-
 .map-accordion:after {
-	content: "\002B"; /* Unicode \02795 character for "plus" sign (+) */
+    content: "\2B9F"; /* Unicode character for black downward arrow head */
 	float: right;
 	margin-right: 10px;
 	font-weight: bold;
 	font-family: 'Open Sans';
 	text-align: right;
-	font-style: normal;
+    font-style: normal;
+    transition: transform 0.3s ease-out;
 }
 
-.map-accordion-active:after {
- 	content: "\2212"; /* Unicode \2796 character for "minus" sign (-) */
+.active:after {
+    transform: rotate(-90deg);
 }
 
 .panel select {
@@ -265,8 +244,6 @@ p{
 
 /* Planning Page */
 /*----------------------------------------------------------------------------------*/
-
-
 #planning-accordion {
 	width: 100%;
 }
@@ -355,22 +332,8 @@ p{
 	font-size:1.3em;
 }
 
-
-
-
-
-
-
 /* About Us Page */
 /*----------------------------------------------------------------------------------*/
-
-
-
-
-
-
-
-
 
 /* Contact Page */
 /*----------------------------------------------------------------------------------*/
@@ -410,7 +373,7 @@ p{
 }
 
 .contact-btn {
-	background: rgb(228,115,117);
+	background: #e47375;
 	color:#ffffff;
 	text-align: center;
 	padding: 10px 20px;
