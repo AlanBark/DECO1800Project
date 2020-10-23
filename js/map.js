@@ -8,9 +8,21 @@ function createMap () {
         zoom: 4.6 // starting zoom
     });
 
+    // Doesn't work, dunno why
+    /*map.on('dragstart', function() {
+        console.log("dragstart");
+        map.getCanvas().style.cursor = 'move';
+    });
+
+    map.on('dragend', function() {
+        console.log("dragend");
+        map.getCanvas().style.cursor = 'default';
+    });*/
+
     map.on('load', function() {
         map.addSource('raw-data', {
             'type' : 'geojson',
+            'generateId': true,
             data: JSON.parse(localStorage.getItem("rawData"))[0]
         });
         var data = JSON.parse(localStorage.getItem("apiData")); 
@@ -18,11 +30,14 @@ function createMap () {
         // iterate over each suburb, set transaction to color, match with 
         data[0]['result']['records'].forEach(function (suburb) {
             // Convert the range of data values to a suitable color
-            var red = suburb['Transactions'];
-            if (red > 255) {
-                red = 255;
+            var x = suburb['Transactions'];
+            var red = Math.floor(((1.3)**((-0.03)*(x-680))*-1)+255);
+            var green = Math.floor(((1.3)**((0.03)*(x+200))*-1)+40);
+            if (green < 0) {
+                green = 0;
             }
-            var color = 'rgb('+ red + ', 0, 0)';
+            var blue = Math.floor((((1.3)**((-0.03)*(x-680))))/2);
+            var color = 'rgb('+ red + ','+ green +','+ blue +')';
             
             matchExpression.push(suburb['Suburb'], color);
         });
@@ -35,12 +50,63 @@ function createMap () {
                 'source': 'raw-data',
                 'paint': {
                     'fill-color': matchExpression,
-                    'fill-opacity': 0.4
+                    'fill-opacity': [
+                        'case',
+                        ['boolean', ['feature-state', 'hover'], false],
+                        1,
+                        0.6
+                    ]
                 }
             }
         );
     });
-    
+
+    var hoveredSuburbID = null;
+    map.on('mousemove', 'filtered-data', function (e) {
+        map.getCanvas().style.cursor = 'pointer';
+        if (e.features.length > 0) {
+            if (hoveredSuburbID) {
+                map.setFeatureState(
+                    { source: 'raw-data', id: hoveredSuburbID },
+                    { hover: false }
+                );
+            }
+            hoveredSuburbID = e.features[0].id;
+            map.setFeatureState(
+                { source: 'raw-data', id: hoveredSuburbID },
+                { hover: true }
+            );
+        }
+    });
+
+    // When the mouse leaves the state-fill layer, update the feature state of the
+    // previously hovered feature.
+    map.on('mouseleave', 'filtered-data', function () {
+        map.getCanvas().style.cursor = '';
+        if (hoveredSuburbID) {
+            map.setFeatureState(
+                { source: 'raw-data', id: hoveredSuburbID },
+                { hover: false }
+            );
+        }
+        hoveredSuburbID = null;
+    });
+
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    })
+
+    map.on('click', 'filtered-data', function(e) {
+        var firstCoord = e.features[0].geometry.coordinates[0][0];
+        var length = e.features[0].geometry.coordinates[0].length;
+        var middleCoord = e.features[0].geometry.coordinates[0][Math.round(length / 2)];
+        var centeredLng = ((middleCoord[0] + firstCoord[0]) / 2); 
+        var centeredLat = ((middleCoord[1] + firstCoord[1]) / 2);
+        var description = e.features[0].properties.qld_loca_2;
+        popup.setLngLat([centeredLng, centeredLat]).setHTML(description).addTo(map);
+    });
+
     // Adapted from https://docs.mapbox.com/mapbox-gl-js/example/mapbox-gl-geocoder-limit-region/
     map.addControl(
         new MapboxGeocoder({
@@ -72,6 +138,15 @@ function createMap () {
             mapboxgl: mapboxgl
         })
     );
+
+    map.addControl(
+        new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+        })
+    );
 }
 
 // requests raw geojson file from server
@@ -86,7 +161,7 @@ function getRawDataAjax() {
 
 // requests data from api.
 function getApiDataAjax() {
-    var data = {resource_id: "b85ecabf-7849-422d-b44d-49c54a3a7c8e"}
+    var data = {resource_id: "b85ecabf-7849-422d-b44d-49c54a3a7c8e", limit: 1000}
     return $.ajax({
         url: "https://data.qld.gov.au/api/3/action/datastore_search",
         data: data,

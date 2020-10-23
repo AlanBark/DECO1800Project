@@ -212,6 +212,12 @@ p{
 }
 
 
+.mapboxgl-popup {
+    max-width: 400px;
+    font-family:  "Playfair Display", Garamond, Cambria, serif;
+    font-size: 1.5em;
+}
+
 .map-accordion {
 	background-color: #eee;
 	color: #444;

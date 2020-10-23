@@ -65,25 +65,22 @@
             var i;
 
             for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("map-accordion-active");
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                panel.style.display = "none";
-                } else {
-                panel.style.display = "block";
-                }
-            });
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("map-accordion-active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                });
             }
         </script>
-
         </div>
-
         <div id='map-container'>
             <div id="loading"></div>
             <div id='map'></div>
         </div>
-
     </div>
     <script>
         startMap();
