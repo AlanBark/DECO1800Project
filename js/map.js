@@ -13,17 +13,6 @@ function createMap () {
         zoom: 4.6 // starting zoom
     });
 
-    // Doesn't work, dunno why
-    /*map.on('dragstart', function() {
-        console.log("dragstart");
-        map.getCanvas().style.cursor = 'move';
-    });
-
-    map.on('dragend', function() {
-        console.log("dragend");
-        map.getCanvas().style.cursor = 'default';
-    });*/
-
     map.on('load', function() {
         map.addSource('raw-data', {
             'type' : 'geojson',
@@ -55,8 +44,10 @@ function createMap () {
                 'source': 'raw-data',
                 'paint': {
                     'fill-color': matchExpression,
-                    'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 1, 
+                    'fill-opacity': ['case', 
+                    ['boolean', ['feature-state', 'hover'], false], 1, 
                     ['boolean', ['feature-state', 'selected'], false], 1, 
+                    ['boolean', ['feature-state', 'inactive'], false], 0,
                     0.6]
                 }
             }
@@ -121,7 +112,7 @@ function createMap () {
             center: e.lngLat,
             zoom: 9,
             speed: 0.8
-        })
+        });
         // show popup at click lngLat
         var description = e.features[0].properties.qld_loca_2;
         popup.setLngLat(e.lngLat).setHTML(description).addTo(map);
