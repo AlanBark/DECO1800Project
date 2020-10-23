@@ -32,7 +32,7 @@ window.onload=function(){
 			
             iNow--;
             tab();
-        },2000);
+        },3500);
         oPrev.style.display='none';
         oNext.style.display='none';
     }
@@ -179,7 +179,6 @@ window.addEventListener('load', function() {
     // If it is currently the fifth image showing, switch back to the first image
     rightArrow.addEventListener('click', changeImage);
  
-    var timer = this.setInterval(changeImage, 2000);
  
     function changeImage() {
         if (currentIndex < 4) {

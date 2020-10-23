@@ -373,15 +373,75 @@ p{
 	align-items: center;
 }
 
+/* Add this below all the other styles */
+
+.empty-state {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	display: none;
+  }
+  
+  .empty-state__title, .empty-state__description {
+	margin-bottom: 5px;
+  }
+
+  .todo-list:empty {
+	display: none;
+  }
+  
+  .todo-list:empty + .empty-state {
+	display: flex;
+  }
+
 #planning-accordion .pseudo-checklist {
 	max-width: 300px;
 }
-  
+#registrar button{
+	font-family: "Playfair Display", Garamond, Cambria, serif;
+	font-size:0.9em;
+	
+	padding:0.5em;
+	border-radius: 5px;
+	background-color: rgb(226, 226, 226)
+}
+#registrar input{
+	min-width: 200px;
+	margin-left: 50px;
+	width: fit-content;
+	padding: 0.8em;
+	border-radius: 5px;
+}
+.main label{
+	margin-left: 50px;
+}
+#invitedList li{
+	border-radius: 20px;
+	margin-left:5px;
+}
 #invitedList span{
 	font-family: "Playfair Display", Garamond, Cambria, serif;
 	font-style: italic;
 	font-size:1.3em;
 }
+#invitedList label{
+	margin: 8px;
+	font-style: italic;
+}
+#invitedList input{
+	margin-left:3px;
+}
+#inveitedList li button{
+	text-transform: capitalize;
+	margin: 3px;
+	border-radius: 5px;
+	font-style: italic;
+	font-family: "Playfair Display", Garamond, Cambria, serif;
+	font-size:0.8em;
+	color: #ccc;
+	background-color: rgb(226,226,226)
+}
+
 
 /* About Us Page */
 /*----------------------------------------------------------------------------------*/
