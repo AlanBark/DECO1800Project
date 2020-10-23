@@ -237,9 +237,10 @@ p{
 
 .panel {
 	padding: 0 10px;
-	display: none;
-	background-color: white;
+	background-color: #eee;
     overflow: hidden;
+    max-height: 0px;
+    transition: max-height 0.3s ease-out;
 }
 
 
@@ -261,9 +262,6 @@ p{
 	background-color: red;
 
 }
-
-
-
 
 /* Planning Page */
 /*----------------------------------------------------------------------------------*/

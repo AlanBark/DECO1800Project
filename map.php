@@ -28,19 +28,18 @@
         <div id="map-filter-section">
 
             <button class="map-accordion">Date</button>
+            
             <div class="panel">
-                
                 <form action="/action_page.php">
                     <label for="date-input">Select a Date:</label>
                     <input type="date" id="date-input" name="date-input">
                     <input type="submit">
                 </form>
-
             </div>
 
             <button class="map-accordion">Price</button>
+            
             <div class="panel">
-
                 <form action="/action_page.php">
                     <label for="price-input">Choose a Price:</label>
                     <select name="price-input" id="price-input" multiple>
@@ -51,36 +50,37 @@
                     <br><br>
                     <input type="submit" value="Submit">
                     </form>
-
             </div>
 
             <button class="map-accordion">Weather</button>
+
             <div class="panel">
             <p>Weather stuff</p>
-
             </div>
 
-        <script>
-            var acc = document.getElementsByClassName("map-accordion");
-            var i;
+            <script>
+                var acc = document.getElementsByClassName("map-accordion");
+                var i;
+                for (i = 0; i < acc.length; i++) {
+                    acc[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.maxHeight) {
+                            panel.style.maxHeight = null;
+                        } else {
+                            panel.style.maxHeight = panel.scrollHeight + "px";
+                        } 
+                    });
+                }
+            </script>
 
-            for (i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function() {
-                    this.classList.toggle("map-accordion-active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.display === "block") {
-                        panel.style.display = "none";
-                    } else {
-                        panel.style.display = "block";
-                    }
-                });
-            }
-        </script>
         </div>
+
         <div id='map-container'>
             <div id="loading"></div>
             <div id='map'></div>
         </div>
+
     </div>
     <script>
         startMap();

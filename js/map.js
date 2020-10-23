@@ -198,6 +198,12 @@ function startMap() {
         // start fade out after 0.5s, fade out takes 1s, after 1.5s hide loading fully
         setTimeout(function() {
             $("#loading").addClass("hidden");
+            var acc = document.getElementsByClassName("map-accordion");
+            var i;
+            for (i = 0; i < acc.length; i++) {
+                var panel = acc[i].nextElementSibling;
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
         }, 500)
         setTimeout(function() {
             $("#loading").css("visibility", "hidden");
