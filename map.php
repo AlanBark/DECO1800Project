@@ -52,7 +52,10 @@
                         <button class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$33 000 +">$$$$</button>
                     </div>
                     <p id="price-info">	&#9432 All prices are data driven estimates from historical information.</p> 
-                    <div id="price-display"></div>
+                    <div id="price-display">
+                        <p id="place-info">Place is </p>
+                        <p id="price-show">Price is </p>
+                    </div>
                 </div>
             </div>
 
@@ -79,8 +82,7 @@
                         }
                     });
                 }
-            </script>
-            <script>
+
                 // enable accordian
                 var acc = document.getElementsByClassName("map-accordion");
                 var i;
