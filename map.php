@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- bootstrap for popup plugin -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <!-- @TODO add this to header with conditional includes -->
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
@@ -12,6 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 <script type="text/javascript" src="js/map.js"></script>
+
 <?php include("includes/header.php");?>
 </head>
 
@@ -19,7 +23,7 @@
 
 <?php include("includes/navigation.php");?>
 
-<div class="container" id="main-content">
+<div id="main-content">
 
     <h2>Interactive Map</h2>
 
@@ -40,16 +44,16 @@
             <button class="map-accordion">Price</button>
             
             <div class="panel">
-                <form action="/action_page.php">
-                    <label for="price-input">Choose a Price:</label>
-                    <select name="price-input" id="price-input" multiple>
-                        <option value="price-low">&#36;</option>
-                        <option value="price-medium">&#36;&#36;</option>
-                        <option value="price-high">&#36;&#36;&#36;</option>
-                    </select>
-                    <br><br>
-                    <input type="submit" value="Submit">
-                    </form>
+                <div id="price-container">
+                    <div id="price-selection">
+                        <button class="price-selector" data-toggle="tooltip" title="$6 000 - $8 000">$</button>
+                        <button class="price-selector" data-toggle="tooltip" title="$8 000 - $16 000">$$</button>
+                        <button class="price-selector" data-toggle="tooltip" title="$16 000 - $33 000">$$$</button>
+                        <button class="price-selector" data-toggle="tooltip" title="$33 000 +">$$$$</button>
+                    </div>
+                    <p id="price-info">All prices are data driven estimates from historical data</p> 
+                    <div id="price-display"></div>
+                </div>
             </div>
 
             <button class="map-accordion">Weather</button>
@@ -84,10 +88,14 @@
     </div>
     <script>
         startMap();
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
 </div>
 
 <?php include("includes/footer.php");?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
