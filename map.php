@@ -46,10 +46,10 @@
             <div class="panel">
                 <div id="price-container">
                     <div id="price-selection">
-                        <button class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$6 000 - $8 000">$</button>
-                        <button class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$8 000 - $16 000">$$</button>
-                        <button class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$16 000 - $33 000">$$$</button>
-                        <button class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$33 000 +">$$$$</button>
+                        <button id="1" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$6 000 - $8 000">$</button>
+                        <button id="2" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$8 000 - $16 000">$$</button>
+                        <button id="3" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$16 000 - $33 000">$$$</button>
+                        <button id="4" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$33 000 +">$$$$</button>
                     </div>
                     <p id="price-info">	&#9432 All prices are data driven estimates from historical information.</p> 
                     <div id="price-display">
@@ -66,23 +66,6 @@
             </div>
 
             <script>
-                // enable pricing options
-                var buttons = document.getElementsByClassName("price-selector");
-                var i;
-                for (i = 0; i < buttons.length; i++) {
-                    buttons[i].addEventListener("click", function() {
-                        if (this.classList.contains("active")) {
-                            this.classList.toggle("active");
-                        } else {
-                            var j;
-                            for (j = 0; j < buttons.length; j++) {
-                                buttons[j].classList.remove("active");
-                            }
-                            this.classList.toggle("active");
-                        }
-                    });
-                }
-
                 // enable accordian
                 var acc = document.getElementsByClassName("map-accordion");
                 var i;
@@ -108,7 +91,7 @@
 
     </div>
     <script>
-        startMap();
+        startMap(map);
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
