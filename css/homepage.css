@@ -137,7 +137,7 @@ h1{
  
 /* colour of the Small dot */
 .dots .square {
-    background:#f60;}
+    background:rgb(228, 132, 228);}
 .center{
 	width:80%;
 	text-align: center;
