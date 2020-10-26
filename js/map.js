@@ -3,6 +3,9 @@ var access_token = 'pk.eyJ1IjoiYWxhbmJhcmsiLCJhIjoiY2tmbmtwamM3MDNqbzJ4cXRmZ2R4a
 // rough coordinates of QLD bounding box.
 var QLDbbox =  [137.95, -29.19, 154.44, -9.11];
 
+var transactionList = {};
+var averageTransactions;
+
 // retrieves the currently selected suburb
 function getMapId () {
     var i;
@@ -31,7 +34,10 @@ function createMap (map) {
         var data = JSON.parse(localStorage.getItem("apiData")); 
         var matchExpression = ['match', ['get', 'qld_loca_2']];
         
-        // iterate over each suburb, set transaction to color, match with 
+        // iterate over each suburb, set transaction to color, match with suburb name
+        // add to transactions/suburb object, calculate average transactions.
+        var count = 0;
+        var total = 0;
         data[0]['result']['records'].forEach(function (suburb) {
             // Convert the range of data values to a suitable color
             var x = suburb['Transactions'];
@@ -44,7 +50,12 @@ function createMap (map) {
             var color = 'rgb('+ red + ','+ green +','+ blue +')';
             
             matchExpression.push(suburb['Suburb'], color);
+            transactionList[suburb['Suburb']] = x;
+            total += x;
+            count++;
         });
+        averageTransactions = Math.round(total/count);
+
         // Last value is the default, used where there is no data
         matchExpression.push('rgba(0, 0, 0, 0)');
         // add layer with expressions
@@ -126,8 +137,36 @@ function createMap (map) {
             zoom: 10,
             speed: 0.8
         });
-        // show popup at click lngLat
+        
         var description = e.features[0].properties.qld_loca_2;
+        var transactions = transactionList[description];
+        // lol this is disgusting
+        if (transactions == undefined) {
+            document.getElementById('place-info').innerHTML = "Location: "+description;
+            document.getElementById('transactions-info').innerHTML = "Average Weddings: No data available";
+            document.getElementById('popularity-index').innerHTML = "Popularity Index: No data available";
+            document.getElementById('price-show').innerHTML = "Price Estimate: No data available";
+        } else {
+            // find how much higher or lower transactions are compared to average.
+            var popularityIndex = ((transactions/averageTransactions)).toFixed(2);
+            if (popularityIndex < 0.3) {
+                document.getElementById('price-show').innerHTML = "Price Estimate: $6 000 - $8 000";
+            } else if (popularityIndex < 1) {
+                document.getElementById('price-show').innerHTML = "Price Estimate: $8 000 - $12 000";
+            } else if (popularityIndex < 2) {
+                document.getElementById('price-show').innerHTML = "Price Estimate: $12 000 - $16 000";
+            } else if (popularityIndex < 3) {
+                document.getElementById('price-show').innerHTML = "Price Estimate: $16 000 - $24 000";
+            } else if (popularityIndex < 5) {
+                document.getElementById('price-show').innerHTML = "Price Estimate: $24 000 - $33 000";
+            } else {
+                document.getElementById('price-show').innerHTML = "Price Estimate: $33 000+";
+            }
+            document.getElementById('place-info').innerHTML = "Location: "+description;
+            document.getElementById('transactions-info').innerHTML = "Average Weddings: "+ transactions + " per year";
+            document.getElementById('popularity-index').innerHTML = "Popularity Index: "+popularityIndex;
+        }
+        // show popup at click lngLat
         popup.setLngLat(e.lngLat).setHTML(description).addTo(map);
     });
 
