@@ -46,10 +46,11 @@
             <div class="panel">
                 <div id="price-container">
                     <div id="price-selection">
-                        <button id="1" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$6 000 - $8 000">$</button>
-                        <button id="2" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$8 000 - $16 000">$$</button>
-                        <button id="3" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$16 000 - $33 000">$$$</button>
-                        <button id="4" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$33 000 +">$$$$</button>
+                        <button id="1" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$6 000 - $12 000">$</button>
+                        <button id="2" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$12 000 - $18 000">$$</button>
+                        <button id="3" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$18 000 - $24 000">$$$</button>
+                        <button id="4" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$24 000 - $30 000">$$$$</button>
+                        <button id="5" class="price-selector" data-toggle="tooltip" data-trigger="hover" title="$30 000+">$$$$$</button>
                     </div>
                     <p id="price-info">	&#9432 All prices are data driven estimates from historical information.</p> 
                     <div id="price-display">
