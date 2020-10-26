@@ -1,3 +1,8 @@
+/* for chrome because chrome */
+*,*:focus,*:hover{
+    outline:none;
+}
+
 * {
 	color: black;
 	margin: 0 auto;
@@ -55,6 +60,7 @@ p{
 }
 
 .nav .nav-link {
+    color: black !important;
 	border-radius: 0.25em;
 	display: inline-block;
 	padding: 0.5em 1em;
@@ -274,6 +280,7 @@ p{
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.2s ease-in;
+    outline: none !important;
 }
 
 #price-info {

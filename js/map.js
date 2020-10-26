@@ -3,14 +3,23 @@ var access_token = 'pk.eyJ1IjoiYWxhbmJhcmsiLCJhIjoiY2tmbmtwamM3MDNqbzJ4cXRmZ2R4a
 // rough coordinates of QLD bounding box.
 var QLDbbox =  [137.95, -29.19, 154.44, -9.11];
 
+// retrieves the currently selected suburb
+function getMapId () {
+    var i;
+    var data = JSON.parse(localStorage.getItem("raw-data"))[0];
+}
+
 // should only be called after localstorage contains api and raw geojson data
-function createMap () {
+function createMap (map) {
     mapboxgl.accessToken = access_token;
-    var map = new mapboxgl.Map({
+    var bounds = [[135.352347, -30.024385], [156.871487, -8.619919]];
+    map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/alanbark/ckfqbb24y0rj519ryeuf99z91', // stylesheet location
-        center: [146.5, -23.4], // starting position [lng, lat]
-        zoom: 4.6 // starting zoom
+        center: [153.015757, -27.497811],
+        zoom: 10, // starting zoom
+        minZoom: 4.6,
+        maxBounds: bounds
     });
 
     map.on('load', function() {
@@ -21,6 +30,7 @@ function createMap () {
         });
         var data = JSON.parse(localStorage.getItem("apiData")); 
         var matchExpression = ['match', ['get', 'qld_loca_2']];
+        
         // iterate over each suburb, set transaction to color, match with 
         data[0]['result']['records'].forEach(function (suburb) {
             // Convert the range of data values to a suitable color
@@ -37,6 +47,9 @@ function createMap () {
         });
         // Last value is the default, used where there is no data
         matchExpression.push('rgba(0, 0, 0, 0)');
+        // add layer with expressions
+        // opacity is full if layer is selected or hovered,
+        // opacity is 0 if inactive is true
         map.addLayer(
             {
                 'id': 'filtered-data',
@@ -110,7 +123,7 @@ function createMap () {
         );
         map.flyTo({
             center: e.lngLat,
-            zoom: 9,
+            zoom: 10,
             speed: 0.8
         });
         // show popup at click lngLat
@@ -151,6 +164,7 @@ function createMap () {
             mapboxgl: mapboxgl
         })
     );
+
     map.addControl(
         new mapboxgl.GeolocateControl({
             positionOptions: {
@@ -159,6 +173,30 @@ function createMap () {
             trackUserLocation: true
         })
     );
+
+    var buttons = document.getElementsByClassName("price-selector");
+    var i;
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function(e) {
+            var value = parseInt(e.target.id);
+            // deselecting current option
+            if (this.classList.contains("active")) {
+                this.classList.toggle("active");
+            } else {
+                var j;
+                for (j = 0; j < buttons.length; j++) {
+                    buttons[j].classList.remove("active");
+                }
+                this.classList.toggle("active");
+            }
+            var id = 0;
+            var currentLayer;
+            while ((currentLayer = map.getLayer(id) != undefined)) {
+                currentLayer = undefined;
+                id++;
+            }
+        });
+    }
 }
 
 // requests raw geojson file from server
