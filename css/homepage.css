@@ -32,6 +32,14 @@ ul{
 	border-left:1px solid #999;
 	color:#f60;
 }
+
+a.prev{
+	display: inline-block; font-size: 15pt; color: rgb(140, 173, 255); transform: rotate(-180deg);
+} 
+a.next{
+	display: inline-block; font-size: 15pt; color: rgb(140, 173, 255);
+}
+
 #box{ width:1200px; height:700px; position:relative; margin:50px auto; overflow:hidden;}
 #box ul{ position:absolute; left:0; top:0;}
 #box ul li{ float:left; width:1200px; height:700px;}
