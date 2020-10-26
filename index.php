@@ -38,23 +38,24 @@ error_reporting(E_ALL);?>
         <div class="scroll">
             <div class="img current"><p class="center">Wedding planning can be stressful, however, we are here to help you!</p>
 			<p class="center">Browse our planning tools to help you organise your big day or click the link below view our interactive map displaying past wedding statistics.</p></div>
-             <div class="img current"><p class="center">put some text later 1</p></div>
-              <div class="img current"><p class="center">put some text later 2</p></div>
-               <div class="img current"><p class="center">put some text later 3</p></div>
-               <div class="img current"><p class="center">put some text later 4</p></div>
+            <!-- Remove blank text box -->
+            <!-- <div class="img current"><p class="center">put some text later 1</p></div>
+            <div class="img current"><p class="center">put some text later 2</p></div>
+            <div class="img current"><p class="center">put some text later 3</p></div>
+            <div class="img current"><p class="center">put some text later 4</p></div> -->
 
         
-            <div class="lf"><</div>
-            <div class="lr">></div>
+            <!-- <div class="lf"><</div>
+            <div class="lr">></div> -->
             
            
-            <div class="dots">
+            <!-- <div class="dots">
                 <span class="square"></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </div> -->
         </div>
     </div>
 		<a class="btn", href="/planning.php">Get Start Now! &nbsp&nbsp></a>
