@@ -33,12 +33,6 @@ ul{
 	color:#f60;
 }
 
-a.prev{
-	display: inline-block; font-size: 15pt; color: rgb(140, 173, 255); transform: rotate(-180deg);
-} 
-a.next{
-	display: inline-block; font-size: 15pt; color: rgb(140, 173, 255);
-}
 
 #box{ width:1200px; height:700px; position:relative; margin:50px auto; overflow:hidden;}
 #box ul{ position:absolute; left:0; top:0;}
@@ -47,8 +41,8 @@ a.next{
 
 #box a{ transition:.2s all ease;}
 #box .prev,#box .next{position:absolute;  top:50%; z-index:2; height:80px; line-height:80px; background:rgba(0,0,0,0.6); color:#fff; width:80px; text-align:center; margin-top:-40px; display:none;}
-#box .prev{ left:0;}
-#box .next{ right:0;}
+#box .prev{ left:0;display: inline-block; font-size: 15pt; color: rgb(140, 173, 255); transform: rotate(-180deg);}
+#box .next{ right:0;display: inline-block; font-size: 15pt; color: rgb(140, 173, 255);}
 #box a:hover{ background:rgba(255,0,0,0.4);}
 
 #box ol{ position:absolute; width:120px; left:50%; margin-left:-60px; bottom:10px;}
