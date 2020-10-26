@@ -5,12 +5,7 @@ var QLDbbox =  [137.95, -29.19, 154.44, -9.11];
 
 var transactionList = {};
 var averageTransactions;
-
-// retrieves the currently selected suburb
-function getMapId () {
-    var i;
-    var data = JSON.parse(localStorage.getItem("raw-data"))[0];
-}
+var priceState = 0;
 
 // should only be called after localstorage contains api and raw geojson data
 function createMap (map) {
@@ -28,7 +23,7 @@ function createMap (map) {
     map.on('load', function() {
         map.addSource('raw-data', {
             'type' : 'geojson',
-            'generateId': true,
+            'promoteId' : 'qld_loca_2',
             data: JSON.parse(localStorage.getItem("rawData"))[0]
         });
         var data = JSON.parse(localStorage.getItem("apiData")); 
@@ -51,6 +46,10 @@ function createMap (map) {
             
             matchExpression.push(suburb['Suburb'], color);
             transactionList[suburb['Suburb']] = x;
+            map.setFeatureState(
+                { source: 'raw-data', id: suburb['Suburb'] },
+                { transactions: x }
+            );
             total += x;
             count++;
         });
@@ -60,7 +59,6 @@ function createMap (map) {
         matchExpression.push('rgba(0, 0, 0, 0)');
         // add layer with expressions
         // opacity is full if layer is selected or hovered,
-        // opacity is 0 if inactive is true
         map.addLayer(
             {
                 'id': 'filtered-data',
@@ -71,7 +69,6 @@ function createMap (map) {
                     'fill-opacity': ['case', 
                     ['boolean', ['feature-state', 'hover'], false], 1, 
                     ['boolean', ['feature-state', 'selected'], false], 1, 
-                    ['boolean', ['feature-state', 'inactive'], false], 0,
                     0.6]
                 }
             }
@@ -121,6 +118,7 @@ function createMap (map) {
     // handle user clicks on features
     map.on('click', 'filtered-data', function(e) {
         // if there's already another suburb selected, deselect it
+        
         if (selectedSuburbID) {
             map.setFeatureState(
                 { source: 'raw-data', id: selectedSuburbID },
@@ -138,8 +136,8 @@ function createMap (map) {
             speed: 0.8
         });
         
-        var description = e.features[0].properties.qld_loca_2;
-        var transactions = transactionList[description];
+        var description = selectedSuburbID;
+        var transactions = map.getFeatureState({source: 'raw-data', id: selectedSuburbID}).transactions;
         // lol this is disgusting
         if (transactions == undefined) {
             document.getElementById('place-info').innerHTML = "Location: "+description;
@@ -150,17 +148,17 @@ function createMap (map) {
             // find how much higher or lower transactions are compared to average.
             var popularityIndex = ((transactions/averageTransactions)).toFixed(2);
             if (popularityIndex < 0.3) {
-                document.getElementById('price-show').innerHTML = "Price Estimate: $6 000 - $8 000";
-            } else if (popularityIndex < 1) {
-                document.getElementById('price-show').innerHTML = "Price Estimate: $8 000 - $12 000";
+                document.getElementById('price-show').innerHTML = "Price Estimate: $6 000 - $12 000";
+            } else if (popularityIndex < 0.8) {
+                document.getElementById('price-show').innerHTML = "Price Estimate: $12 000 - $18 000";
             } else if (popularityIndex < 2) {
-                document.getElementById('price-show').innerHTML = "Price Estimate: $12 000 - $16 000";
+                document.getElementById('price-show').innerHTML = "Price Estimate: $18 000 - $24 000";
             } else if (popularityIndex < 3) {
-                document.getElementById('price-show').innerHTML = "Price Estimate: $16 000 - $24 000";
+                document.getElementById('price-show').innerHTML = "Price Estimate: $24 000 - $30 000";
             } else if (popularityIndex < 5) {
-                document.getElementById('price-show').innerHTML = "Price Estimate: $24 000 - $33 000";
+                document.getElementById('price-show').innerHTML = "Price Estimate: $30 000 - $36 000";
             } else {
-                document.getElementById('price-show').innerHTML = "Price Estimate: $33 000+";
+                document.getElementById('price-show').innerHTML = "Price Estimate: $36 000+";
             }
             document.getElementById('place-info').innerHTML = "Location: "+description;
             document.getElementById('transactions-info').innerHTML = "Average Weddings: "+ transactions + " per year";
@@ -221,18 +219,60 @@ function createMap (map) {
             // deselecting current option
             if (this.classList.contains("active")) {
                 this.classList.toggle("active");
+                // remove filter
+                map.setFilter("filtered-data", null);
             } else {
+                switch (value) {
+                    case 1:
+                        map.setFilter("filtered-data", ["<=", 
+                            ["/" ,
+                                ["number", ["get", ["get", "qld_loca_2"], ["literal", transactionList]]], 
+                                averageTransactions],
+                            0.3]);
+                        break;
+                    case 2:
+                        map.setFilter("filtered-data", 
+                        ["all", 
+                            [">", 
+                            ["/" ,
+                                ["number", ["get", ["get", "qld_loca_2"], ["literal", transactionList]]], averageTransactions], 0.3],
+                            ["<=", 
+                            ["/" ,
+                                ["number", ["get", ["get", "qld_loca_2"], ["literal", transactionList]]], averageTransactions], 0.8]]);
+                        break;
+                    case 3:
+                        map.setFilter("filtered-data", 
+                        ["all", 
+                            [">", 
+                            ["/" ,
+                                ["number", ["get", ["get", "qld_loca_2"], ["literal", transactionList]]], averageTransactions], 0.8],
+                            ["<=", 
+                            ["/" ,
+                                ["number", ["get", ["get", "qld_loca_2"], ["literal", transactionList]]], averageTransactions], 2]]);
+                        break;
+                    case 4:
+                        map.setFilter("filtered-data", 
+                        ["all", 
+                            [">", 
+                            ["/" ,
+                                ["number", ["get", ["get", "qld_loca_2"], ["literal", transactionList]]], averageTransactions], 2],
+                            ["<=", 
+                            ["/" ,
+                                ["number", ["get", ["get", "qld_loca_2"], ["literal", transactionList]]], averageTransactions], 4]]);
+                        break;
+                    case 5:
+                        map.setFilter("filtered-data", [">", 
+                            ["/" ,
+                                ["number", ["get", ["get", "qld_loca_2"], ["literal", transactionList]]], 
+                                averageTransactions],
+                            4]);
+                        break;
+                }
                 var j;
                 for (j = 0; j < buttons.length; j++) {
                     buttons[j].classList.remove("active");
                 }
                 this.classList.toggle("active");
-            }
-            var id = 0;
-            var currentLayer;
-            while ((currentLayer = map.getLayer(id) != undefined)) {
-                currentLayer = undefined;
-                id++;
             }
         });
     }
