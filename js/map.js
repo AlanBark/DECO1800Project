@@ -222,6 +222,7 @@ function createMap (map) {
                 // remove filter
                 map.setFilter("filtered-data", null);
             } else {
+                // this could be cleaner, not sure how functions would behave with mapbox expressions though. 
                 switch (value) {
                     case 1:
                         map.setFilter("filtered-data", ["<=", 
@@ -267,6 +268,8 @@ function createMap (map) {
                                 averageTransactions],
                             4]);
                         break;
+                    default:
+                        map.setFilter("filtered-data", null);
                 }
                 var j;
                 for (j = 0; j < buttons.length; j++) {
