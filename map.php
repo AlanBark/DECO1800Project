@@ -53,8 +53,10 @@
                     </div>
                     <p id="price-info">	&#9432 All prices are data driven estimates from historical information.</p> 
                     <div id="price-display">
-                        <p id="place-info">Place is </p>
-                        <p id="price-show">Price is </p>
+                        <p id="place-info">Location: </p>
+                        <p id="transactions-info">Average Weddings: </p>
+                        <p id="popularity-index">Popularity Index: </p>
+                        <p id="price-show">Price Estimate: </p>
                     </div>
                 </div>
             </div>
