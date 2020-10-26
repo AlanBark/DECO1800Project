@@ -15,8 +15,8 @@ error_reporting(E_ALL);?>
 
 
 <div id="box">
-    <a href="javascript:;" class="prev"><</a>
-    <a href="javascript:;" class="next">></a>
+    <a href="javascript:;" class="prev" style="text-decoration: none">&#10148;</a>
+	<a href="javascript:;" class="next" style="text-decoration: none">&#10148;</a>
     <ul>
         <li><img src="images/HomePageImage1.jpg"></li>
         <li><img src="images/HomePageImage2.jpg"></li>
