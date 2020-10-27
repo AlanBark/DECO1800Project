@@ -26,7 +26,7 @@
 
 <div id="main-content">
 
-    <h2>Interactive Map</h2>
+    <h1>Interactive Map</h1>
 
     <div id="big-box">
 

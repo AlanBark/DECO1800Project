@@ -10,7 +10,7 @@
             break;
         case "/map.php":
             $CURRENT_PAGE = "Map"; 
-            $PAGE_TITLE = "Here is a map";
+            $PAGE_TITLE = "Map page";
             break;
         case "/planning.php":
             $CURRENT_PAGE = "Planning"; 
@@ -18,6 +18,6 @@
             break;
 		default:
 			$CURRENT_PAGE = "Index";
-			$PAGE_TITLE = "Welcome to my homepage!";
+			$PAGE_TITLE = "Save The Date";
 	}
 ?>

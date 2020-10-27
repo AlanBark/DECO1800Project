@@ -1,3 +1,5 @@
+<a href="index.php" id="logo"><img src="/images/logo.png"></a>
+
 <div>
 	<ul class="nav">
 	  <li class="nav-item">

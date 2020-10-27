@@ -6,7 +6,6 @@ error_reporting(E_ALL);?>
 <html>
 <head>
     <?php include("includes/header.php");?>
-    <link type="text/css" rel="stylesheet" href="css/homepage.css">
 </head>
 <body>
 

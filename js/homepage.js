@@ -1,4 +1,4 @@
-/** Code inspired from
+/** Slideshow code inspired from
  * https://blog.csdn.net/weixin_44546549/article/details/86518473
  * https://juejin.im/post/6844903670618800136
  * https://zhuanlan.zhihu.com/p/40516156
