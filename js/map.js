@@ -25,14 +25,25 @@ function updateMonthOffset(selectedMonth) {
         findMonthAverage();
     }
     var monthlyTransactions = JSON.parse(localStorage.getItem("monthData"))[0]['result']['records'][selectedMonth]['Transactions'];
-    var monthOffset = monthlyTransactions / monthAverage;
+    var monthOffset = (monthlyTransactions / monthAverage).toFixed(2);
     console.log(monthOffset); 
 }
 
 function addMonthButtons() {
     var buttons = document.getElementsByClassName('month-btn');
-    for (i = 0; i < buttons.length; i++) {
+    for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener("click", function(e) {
+            // disable if clicked twice
+            if (this.classList.contains("selected")) {
+                this.classList.toggle("selected");
+            } else {
+                // disable all buttons
+                for (var j = 0; j < buttons.length; j++) {
+                    buttons[j].classList.remove("selected");
+                }
+                // enable current button
+                this.classList.toggle("selected");
+            }
             updateMonthOffset(e.target.id);
         });
     }
@@ -58,7 +69,7 @@ function createMap (map) {
             data: JSON.parse(localStorage.getItem("rawData"))[0]
         });
         var data = JSON.parse(localStorage.getItem("suburbData")); 
-        var matchExpression = ['match', ['get', 'qld_loca_2']];
+        var colorStorage = {};
         
         // iterate over each suburb, set transaction to color, match with suburb name
         // add to transactions/suburb object, calculate average transactions.
@@ -73,9 +84,10 @@ function createMap (map) {
                 green = 0;
             }
             var blue = Math.floor((((1.3)**((-0.03)*(x-680))))/2);
-            var color = 'rgb('+ red + ','+ green +','+ blue +')';
+            //var color = 'rgb('+ red + ','+ green +','+ blue +')';
+            var color = { red: red, green: green, blue: blue };
             
-            matchExpression.push(suburb['Suburb'], color);
+            colorStorage[suburb['Suburb']] = color;
             transactionList[suburb['Suburb']] = x;
             map.setFeatureState(
                 { source: 'raw-data', id: suburb['Suburb'] },
@@ -86,8 +98,6 @@ function createMap (map) {
         });
         averageTransactions = Math.round(total/count);
 
-        // Last value is the default, used where there is no data
-        matchExpression.push('rgba(0, 0, 0, 0)');
         // add layer with expressions
         // opacity is full if layer is selected or hovered,
         map.addLayer(
@@ -96,7 +106,12 @@ function createMap (map) {
                 'type': 'fill' ,
                 'source': 'raw-data',
                 'paint': {
-                    'fill-color': matchExpression,
+                    'fill-color': 
+                    ["rgb",
+                        ["get", "red", ["get", ["get", "qld_loca_2"], ["literal", colorStorage]]],
+                        ["get", "green", ["get", ["get", "qld_loca_2"], ["literal", colorStorage]]],
+                        ["get", "blue", ["get", ["get", "qld_loca_2"], ["literal", colorStorage]]],
+                    ],
                     'fill-opacity': ['case', 
                     ['boolean', ['feature-state', 'hover'], false], 1, 
                     ['boolean', ['feature-state', 'selected'], false], 1, 
@@ -104,6 +119,12 @@ function createMap (map) {
                 }
             }
         );
+
+        map.setFilter("filtered-data", [">", 
+        ["/" ,
+            ["number", ["get", ["get", "qld_loca_2"], ["literal", transactionList]]], 
+            averageTransactions],
+        0]);
     });
     
     // ID's of currently selected and currently hovered suburbs
@@ -172,9 +193,9 @@ function createMap (map) {
         // lol this is disgusting
         if (transactions == undefined) {
             document.getElementById('place-info').innerHTML = "Location: "+description;
-            document.getElementById('transactions-info').innerHTML = "Average Weddings: No data available";
-            document.getElementById('popularity-index').innerHTML = "Popularity Index: No data available";
-            document.getElementById('price-show').innerHTML = "Price Estimate: No data available";
+            document.getElementById('transactions-info').innerHTML = "Average Weddings: Not enough data available";
+            document.getElementById('popularity-index').innerHTML = "Popularity Index: Not enough data available";
+            document.getElementById('price-show').innerHTML = "Price Estimate: Not enough data available";
         } else {
             // find how much higher or lower transactions are compared to average.
             var popularityIndex = ((transactions/averageTransactions)).toFixed(2);
@@ -251,7 +272,11 @@ function createMap (map) {
             if (this.classList.contains("active")) {
                 this.classList.toggle("active");
                 // remove filter
-                map.setFilter("filtered-data", null);
+                map.setFilter("filtered-data", [">", 
+                            ["/" ,
+                                ["number", ["get", ["get", "qld_loca_2"], ["literal", transactionList]]], 
+                                averageTransactions],
+                            0]);
             } else {
                 // this could be cleaner, not sure how functions would behave with mapbox expressions though. 
                 switch (value) {

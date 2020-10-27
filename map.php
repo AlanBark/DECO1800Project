@@ -36,18 +36,18 @@
             
             <div class="panel">
                 <div id="range-container">
-                    <button class="month-btn summer" id="1" data-toggle="tooltip" data-trigger="hover" title="January"><i class="fas fa-tree"></i></button>
-                    <button class="month-btn summer" id="2" data-toggle="tooltip" data-trigger="hover" title="February"><i class="fas fa-tree"></i></button>
-                    <button class="month-btn autumn" id="3" data-toggle="tooltip" data-trigger="hover" title="March"><i class="fas fa-tree"></i></button>
-                    <button class="month-btn autumn" id="4" data-toggle="tooltip" data-trigger="hover" title="April"><i class="fas fa-tree"></i></button>
-                    <button class="month-btn autumn" id="5" data-toggle="tooltip" data-trigger="hover" title="May"><i class="fas fa-tree"></i></button>
-                    <button class="month-btn winter" id="6" data-toggle="tooltip" data-trigger="hover" title="June"><i class="fas fa-tree"></i></button>
-                    <button class="month-btn winter" id="7" data-toggle="tooltip" data-trigger="hover" title="July"><i class="fas fa-tree"></i></button>
-                    <button class="month-btn winter" id="8" data-toggle="tooltip" data-trigger="hover" title="August"><i class="fas fa-tree"></i></button>
-                    <button class="month-btn spring" id="9" data-toggle="tooltip" data-trigger="hover" title="September"><i class="fas fa-tree"></i></button>
-                    <button class="month-btn spring" id="10" data-toggle="tooltip" data-trigger="hover" title="October"><i class="fas fa-tree"></i></button>
-                    <button class="month-btn spring" id="11" data-toggle="tooltip" data-trigger="hover" title="November"><i class="fas fa-tree"></i></button>
-                    <button class="month-btn summer" id="12" data-toggle="tooltip" data-trigger="hover" title="December"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn summer" id="0" data-toggle="tooltip" data-trigger="hover" title="January"><i class="fas fa-tree" id="0"></i></button>
+                    <button class="month-btn summer" id="1" data-toggle="tooltip" data-trigger="hover" title="February"><i class="fas fa-tree" id="1"></i></button>
+                    <button class="month-btn autumn" id="2" data-toggle="tooltip" data-trigger="hover" title="March"><i class="fas fa-tree" id="2"></i></button>
+                    <button class="month-btn autumn" id="3" data-toggle="tooltip" data-trigger="hover" title="April"><i class="fas fa-tree" id="3"></i></button>
+                    <button class="month-btn autumn" id="4" data-toggle="tooltip" data-trigger="hover" title="May"><i class="fas fa-tree" id="4"></i></button>
+                    <button class="month-btn winter" id="5" data-toggle="tooltip" data-trigger="hover" title="June"><i class="fas fa-tree" id="5"></i></button>
+                    <button class="month-btn winter" id="6" data-toggle="tooltip" data-trigger="hover" title="July"><i class="fas fa-tree" id="6"></i></button>
+                    <button class="month-btn winter" id="7" data-toggle="tooltip" data-trigger="hover" title="August"><i class="fas fa-tree" id="7"></i></button>
+                    <button class="month-btn spring" id="8" data-toggle="tooltip" data-trigger="hover" title="September"><i class="fas fa-tree" id="8"></i></button>
+                    <button class="month-btn spring" id="9" data-toggle="tooltip" data-trigger="hover" title="October"><i class="fas fa-tree" id="9"></i></button>
+                    <button class="month-btn spring" id="10" data-toggle="tooltip" data-trigger="hover" title="November"><i class="fas fa-tree" id="10"></i></button>
+                    <button class="month-btn summer" id="11" data-toggle="tooltip" data-trigger="hover" title="December"><i class="fas fa-tree" id="11"></i></button>
                 </div>
             </div>
 
@@ -105,6 +105,7 @@
     </div>
     <script>
         addMonthButtons();
+        updateMonthOffset(2);
         startMap(map);
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();

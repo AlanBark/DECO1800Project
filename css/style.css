@@ -315,6 +315,10 @@ p{
     font-size: 17px;
 }
 
+.month-btn.selected .fa-tree {
+    font-size: 30px;
+}
+
 .summer .fa-tree {
     color: #ff8566a8;
 }
@@ -331,19 +335,19 @@ p{
     color: #009933a2;
 }
 
-.summer:hover .fa-tree {
+.summer:hover .fa-tree, .summer.selected .fa-tree {
     color: #ff8566;
 }
 
-.autumn:hover .fa-tree {
+.autumn:hover .fa-tree, .autumn.selected .fa-tree {
     color: #ffbf80;
 }
 
-.winter:hover .fa-tree {
+.winter:hover .fa-tree, .winter.selected .fa-tree {
     color: #6666ff;
 }
 
-.spring:hover .fa-tree {
+.spring:hover .fa-tree, .spring.selected .fa-tree {
     color: #009933;
 }
 
@@ -426,8 +430,6 @@ p{
 	grid-template-columns: 30px auto;
 	align-items: center;
 }
-
-
 
 .empty-state {
 	flex-direction: column;
