@@ -6,8 +6,9 @@ var QLDbbox =  [137.95, -29.19, 154.44, -9.11];
 var transactionList = {};
 var averageTransactions;
 var priceState = 0;
-var monthOffset = 0;
+var monthOffset = 1;
 var monthAverage = null;
+var colorStorage = {};
 
 // find average, I'm aware count should always be 12.
 function findMonthAverage() {
@@ -25,28 +26,7 @@ function updateMonthOffset(selectedMonth) {
         findMonthAverage();
     }
     var monthlyTransactions = JSON.parse(localStorage.getItem("monthData"))[0]['result']['records'][selectedMonth]['Transactions'];
-    var monthOffset = (monthlyTransactions / monthAverage).toFixed(2);
-    console.log(monthOffset); 
-}
-
-function addMonthButtons() {
-    var buttons = document.getElementsByClassName('month-btn');
-    for (var i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function(e) {
-            // disable if clicked twice
-            if (this.classList.contains("selected")) {
-                this.classList.toggle("selected");
-            } else {
-                // disable all buttons
-                for (var j = 0; j < buttons.length; j++) {
-                    buttons[j].classList.remove("selected");
-                }
-                // enable current button
-                this.classList.toggle("selected");
-            }
-            updateMonthOffset(e.target.id);
-        });
-    }
+    monthOffset = (monthlyTransactions / monthAverage).toFixed(2); 
 }
 
 // should only be called after localstorage contains api and raw geojson data
@@ -69,7 +49,7 @@ function createMap (map) {
             data: JSON.parse(localStorage.getItem("rawData"))[0]
         });
         var data = JSON.parse(localStorage.getItem("suburbData")); 
-        var colorStorage = {};
+
         
         // iterate over each suburb, set transaction to color, match with suburb name
         // add to transactions/suburb object, calculate average transactions.
@@ -97,7 +77,8 @@ function createMap (map) {
             count++;
         });
         averageTransactions = Math.round(total/count);
-
+        updateMonthOffset(2);
+        console.log(monthOffset);
         // add layer with expressions
         // opacity is full if layer is selected or hovered,
         map.addLayer(
@@ -198,7 +179,7 @@ function createMap (map) {
             document.getElementById('price-show').innerHTML = "Price Estimate: Not enough data available";
         } else {
             // find how much higher or lower transactions are compared to average.
-            var popularityIndex = ((transactions/averageTransactions)).toFixed(2);
+            var popularityIndex = ((transactions/averageTransactions) * monthOffset).toFixed(2);
             if (popularityIndex < 0.3) {
                 document.getElementById('price-show').innerHTML = "Price Estimate: $6 000 - $12 000";
             } else if (popularityIndex < 0.8) {
@@ -263,10 +244,38 @@ function createMap (map) {
         })
     );
 
-    var buttons = document.getElementsByClassName("price-selector");
+    var monthButtons = document.getElementsByClassName('month-btn');
+    for (var i = 0; i < monthButtons.length; i++) {
+        monthButtons[i].addEventListener("click", function(e) {
+            // disable all monthButtons
+            for (var j = 0; j < monthButtons.length; j++) {
+                monthButtons[j].classList.remove("selected");
+            }
+            // enable current button
+            this.classList.toggle("selected");
+            updateMonthOffset(e.target.id);
+            // deep copy
+            var colorStorageCpy = JSON.parse(JSON.stringify(colorStorage));
+            Object.keys(colorStorage).forEach(function (suburb) {
+                var newRed = Math.round(colorStorage[suburb].red*monthOffset);
+                if (newRed > 255) {
+                    newRed = 255;
+                }
+                colorStorageCpy[suburb].red = newRed;
+            });
+            map.setPaintProperty("filtered-data", "fill-color",
+            ["rgb",
+                ["get", "red", ["get", ["get", "qld_loca_2"], ["literal", colorStorageCpy]]],
+                ["get", "green", ["get", ["get", "qld_loca_2"], ["literal", colorStorageCpy]]],
+                ["get", "blue", ["get", ["get", "qld_loca_2"], ["literal", colorStorageCpy]]],
+            ]);
+        });
+    }
+
+    var priceButtons = document.getElementsByClassName("price-selector");
     var i;
-    for (i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function(e) {
+    for (i = 0; i < priceButtons.length; i++) {
+        priceButtons[i].addEventListener("click", function(e) {
             var value = parseInt(e.target.id);
             // deselecting current option
             if (this.classList.contains("active")) {
@@ -328,8 +337,8 @@ function createMap (map) {
                         map.setFilter("filtered-data", null);
                 }
                 var j;
-                for (j = 0; j < buttons.length; j++) {
-                    buttons[j].classList.remove("active");
+                for (j = 0; j < priceButtons.length; j++) {
+                    priceButtons[j].classList.remove("active");
                 }
                 this.classList.toggle("active");
             }
