@@ -5,7 +5,7 @@
 <!-- bootstrap for popup plugin -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<!-- @TODO add this to header with conditional includes -->
+<!-- mapbox cdn -->
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
@@ -17,6 +17,7 @@
 <script type="text/javascript" src="js/map.js"></script>
 
 <?php include("includes/header.php");?>
+
 </head>
 
 <body>
@@ -34,11 +35,20 @@
             <button class="map-accordion">Date</button>
             
             <div class="panel">
-                <form action="/action_page.php">
-                    <label for="date-input">Select a Date:</label>
-                    <input type="date" id="date-input" name="date-input">
-                    <input type="submit">
-                </form>
+                <div id="range-container">
+                    <button class="month-btn summer" id="1" data-toggle="tooltip" data-trigger="hover" title="January"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn summer" id="2" data-toggle="tooltip" data-trigger="hover" title="February"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn autumn" id="3" data-toggle="tooltip" data-trigger="hover" title="March"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn autumn" id="4" data-toggle="tooltip" data-trigger="hover" title="April"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn autumn" id="5" data-toggle="tooltip" data-trigger="hover" title="May"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn winter" id="6" data-toggle="tooltip" data-trigger="hover" title="June"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn winter" id="7" data-toggle="tooltip" data-trigger="hover" title="July"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn winter" id="8" data-toggle="tooltip" data-trigger="hover" title="August"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn spring" id="9" data-toggle="tooltip" data-trigger="hover" title="September"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn spring" id="10" data-toggle="tooltip" data-trigger="hover" title="October"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn spring" id="11" data-toggle="tooltip" data-trigger="hover" title="November"><i class="fas fa-tree"></i></button>
+                    <button class="month-btn summer" id="12" data-toggle="tooltip" data-trigger="hover" title="December"><i class="fas fa-tree"></i></button>
+                </div>
             </div>
 
             <button class="map-accordion">Pricing</button>
@@ -94,6 +104,7 @@
 
     </div>
     <script>
+        addMonthButtons();
         startMap(map);
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
