@@ -9,7 +9,7 @@
 <?php include("includes/navigation.php");?>
 
 <div class="container contact-wrapper" id="main-content">
-	<h2>Contact Us</h2>
+	<h1>Contact Us</h1>
 
 	<div id="contact-area">
 

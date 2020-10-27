@@ -13,10 +13,10 @@
 
 
 <div class="planning container" id="main-content">
-	<h2>Planning</h2>
+	<h1>Planning</h1>
 </div>
 
-<!--Code insired by https://codepen.io/arjancodes/pen/gbweYB-->
+<!-- Horizontal Flexbox Accordion code insired by https://codepen.io/arjancodes/pen/gbweYB -->
 <div id="planning-accordion">
 
 	<ul>
