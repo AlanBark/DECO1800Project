@@ -6,6 +6,37 @@ var QLDbbox =  [137.95, -29.19, 154.44, -9.11];
 var transactionList = {};
 var averageTransactions;
 var priceState = 0;
+var monthOffset = 0;
+var monthAverage = null;
+
+// find average, I'm aware count should always be 12.
+function findMonthAverage() {
+    var data = JSON.parse(localStorage.getItem("monthData"))[0];
+    var total = 0, count = 0;
+    data['result']['records'].forEach(function (month) {
+        total += month['Transactions'];
+        count++;
+    });
+    monthAverage = Math.round(total / count);
+}
+
+function updateMonthOffset(selectedMonth) {
+    if (monthAverage == null) {
+        findMonthAverage();
+    }
+    var monthlyTransactions = JSON.parse(localStorage.getItem("monthData"))[0]['result']['records'][selectedMonth]['Transactions'];
+    var monthOffset = monthlyTransactions / monthAverage;
+    console.log(monthOffset); 
+}
+
+function addMonthButtons() {
+    var buttons = document.getElementsByClassName('month-btn');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function(e) {
+            updateMonthOffset(e.target.id);
+        });
+    }
+}
 
 // should only be called after localstorage contains api and raw geojson data
 function createMap (map) {
@@ -26,7 +57,7 @@ function createMap (map) {
             'promoteId' : 'qld_loca_2',
             data: JSON.parse(localStorage.getItem("rawData"))[0]
         });
-        var data = JSON.parse(localStorage.getItem("apiData")); 
+        var data = JSON.parse(localStorage.getItem("suburbData")); 
         var matchExpression = ['match', ['get', 'qld_loca_2']];
         
         // iterate over each suburb, set transaction to color, match with suburb name
@@ -291,8 +322,8 @@ function getRawDataAjax() {
     });
 }
 
-// requests data from api.
-function getApiDataAjax() {
+// requests suburb data from api.
+function getSuburbDataAjax() {
     var data = {resource_id: "b85ecabf-7849-422d-b44d-49c54a3a7c8e", limit: 1000}
     return $.ajax({
         url: "https://data.qld.gov.au/api/3/action/datastore_search",
@@ -302,8 +333,19 @@ function getApiDataAjax() {
     });
 }
 
+// requests month data from api.
+function getMonthDataAjax() {
+    var data = {resource_id: "4618c255-5f2c-4f10-9653-161505f447ce"}
+    return $.ajax({
+        url: "https://data.qld.gov.au/api/3/action/datastore_search",
+        data: data,
+        dataType: "jsonp",
+        cache: true
+    });
+}
+
 function dataExists() {
-    if (localStorage.getItem("rawData") === null || localStorage.getItem("apiData") === null) {
+    if (localStorage.getItem("rawData") === null || localStorage.getItem("suburbData") === null || localStorage.getItem("monthData") === null) {
         return false;
     } else {
         return true;
@@ -317,9 +359,10 @@ function startMap() {
             createMap();
         } else { 
             // call both ajax, run function when finished.
-            $.when(getRawDataAjax(), getApiDataAjax()).done(function(raw, api){
+            $.when(getRawDataAjax(), getSuburbDataAjax(), getMonthDataAjax()).done(function(raw, suburb, month){
                 localStorage.setItem("rawData", JSON.stringify(raw));
-                localStorage.setItem("apiData", JSON.stringify(api));
+                localStorage.setItem("suburbData", JSON.stringify(suburb));
+                localStorage.setItem("monthData", JSON.stringify(month));
                 if (dataExists()) {
                     createMap();
                 } else {

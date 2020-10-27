@@ -271,7 +271,7 @@ p{
     text-decoration: none;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in;
+    transition: 0.2s ease-in;
     outline: none !important;
 }
 
@@ -292,8 +292,65 @@ p{
     background-color: #e47375;
 }
 
+/* Month Range Slider */
+/*----------------------------------------------------------------------------------*/
 
+#range-container {
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 
+.month-btn {
+    flex-grow: 1;
+    background-color: transparent; /* Blue background */
+    border: none; /* Remove borders */
+    padding: 12px 16px; /* Some padding */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+.month-btn:hover .fa-tree {
+    font-size: 30px;
+}
+
+.fa-tree {
+    transition: 0.2s ease-out;
+    font-size: 17px;
+}
+
+.summer .fa-tree {
+    color: #ff8566a8;
+}
+
+.autumn .fa-tree {
+    color: #ffc080a8;
+}
+
+.winter .fa-tree {
+    color: #6666ffa2;
+}
+
+.spring .fa-tree {
+    color: #009933a2;
+}
+
+.summer:hover .fa-tree {
+    color: #ff8566;
+}
+
+.autumn:hover .fa-tree {
+    color: #ffbf80;
+}
+
+.winter:hover .fa-tree {
+    color: #6666ff;
+}
+
+.spring:hover .fa-tree {
+    color: #009933;
+}
 
 /* Planning Page */
 /*----------------------------------------------------------------------------------*/
