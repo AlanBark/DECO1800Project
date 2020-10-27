@@ -287,6 +287,28 @@ p{
     background-color: #e47375;
 }
 
+#legend {
+    background-color: transparent;
+    z-index: 1;
+    position: absolute;
+    height: 5%;
+    width: 25%;
+    top: 90%;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    pointer-events:none;
+}
+
+#gradient {
+    background-image: linear-gradient(to right, Blue, red);
+    width: 80%;
+    padding-top: 5px;
+    height: 20%;
+    border-radius: 25px;
+}
+
 /* Month Range Slider */
 /*----------------------------------------------------------------------------------*/
 
