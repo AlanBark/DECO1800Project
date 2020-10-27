@@ -100,6 +100,11 @@
         <div id='map-container'>
             <div id="loading"></div>
             <div id='map'></div>
+            <div id="legend">
+                <div id="gradient"></div>
+                <p>Less Popular</p>
+                <p>More Popular</p>
+            </div>
         </div>
 
     </div>

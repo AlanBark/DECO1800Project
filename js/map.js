@@ -78,7 +78,6 @@ function createMap (map) {
         });
         averageTransactions = Math.round(total/count);
         updateMonthOffset(2);
-        console.log(monthOffset);
         // add layer with expressions
         // opacity is full if layer is selected or hovered,
         map.addLayer(
