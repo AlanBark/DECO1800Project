@@ -1,15 +1,16 @@
 //Code inspired by https://codepen.io/aaltamirano1/full/XNaBep/
+
 document.addEventListener('DOMContentLoaded', () =>{
   const form= document.getElementById('registrar');//const because we wont be assigning any different value to form
   const input= form.querySelector('input');//reads what was put into form
-  const mainDiv= document.querySelector('.main');
-  const ul= document.getElementById('invitedList');
+  const mainDiv= document.querySelector('.guestlist');
+  const ul= document.getElementById('guestnames');
   
   const div= document.createElement('div');
   const filterLabel= document.createElement('label');
   const filterCheckBox= document.createElement('input');
     
-  filterLabel.textContent= "Hide those who haven't responded.";
+  filterLabel.textContent= "Hide those who haven't responded";
   filterCheckBox.type= 'checkbox';
   div.appendChild(filterLabel);
   div.appendChild(filterCheckBox);

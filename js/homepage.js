@@ -1,6 +1,13 @@
+/** Code inspired from
+ * https://blog.csdn.net/weixin_44546549/article/details/86518473
+ * https://juejin.im/post/6844903670618800136
+ * https://zhuanlan.zhihu.com/p/40516156
+ */
+
+
 window.onload=function(){
     // Get the parameter object
-    var oBox=document.getElementById('box');
+    var oBox=document.getElementById('slideshow');
     // Get the the left botton
     var oPrev=oBox.children[0];
     // Get the the right botton

@@ -46,7 +46,7 @@ p{
 }
 
 .nav .nav-link.active, .nav .show>.nav-link {
-	color: white;
+	color: white !important;
 	background-color: rgb(228,115,117);
 }
 
@@ -68,6 +68,8 @@ p{
 	text-decoration: none;
 	font-size: 1.1em;
 }
+
+
 
 /* Footer Styling */
 /*----------------------------------------------------------------------------------*/
@@ -121,27 +123,17 @@ p{
 	margin: 0 10%;
 }
 
+
+
+
 /* Home Page */
 /*----------------------------------------------------------------------------------*/
-.home-info-container {
-	text-align: center;
-	position: absolute;
-	left: 60%;
-	right: 10%;
-	background-color: white;
-	border: solid black 1px;
-	width: 30%;
-	margin: 0;
-	padding: 0;
-}
 
-.home-info-container h1 {
-	padding: 24px 0;
-}
 
-.home-info-text {
-	padding: 24px;
-}
+
+
+
+
 
 /* Map Page */
 /*----------------------------------------------------------------------------------*/
@@ -300,6 +292,9 @@ p{
     background-color: #e47375;
 }
 
+
+
+
 /* Planning Page */
 /*----------------------------------------------------------------------------------*/
 #planning-accordion {
@@ -380,65 +375,78 @@ p{
 	align-items: center;
 }
 
-/* Add this below all the other styles */
+
 
 .empty-state {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	display: none;
-  }
+}
   
-  .empty-state__title, .empty-state__description {
+.empty-state__title, .empty-state__description {
 	margin-bottom: 5px;
-  }
+}
 
-  .todo-list:empty {
+.todo-list:empty {
 	display: none;
-  }
-  
-  .todo-list:empty + .empty-state {
+}
+
+.todo-list:empty + .empty-state {
 	display: flex;
-  }
+}
 
 #planning-accordion .pseudo-checklist {
 	max-width: 300px;
 }
+
 #registrar button{
-	font-family: "Playfair Display", Garamond, Cambria, serif;
-	font-size:0.9em;
-	
-	padding:0.5em;
+	font-size: 0.9em;
+	border: none;
+	padding:0.8em;
 	border-radius: 5px;
-	background-color: rgb(226, 226, 226)
+	background-color: rgb(201, 83, 85);
+	color: #ffffff;
+	cursor: pointer;
 }
+
 #registrar input{
-	min-width: 200px;
-	margin-left: 50px;
+	background-color:   rgb(226, 226, 226);
+	min-width: 60%;
+	margin-left: 10%;
 	width: fit-content;
+	border: none;
 	padding: 0.8em;
+	font-size: 0.9em;
 	border-radius: 5px;
 }
-.main label{
-	margin-left: 50px;
+
+.guestlist label{
+	padding-left: 20%;
+	margin: 5%;
 }
-#invitedList li{
+
+#guestnames li{
 	border-radius: 20px;
 	margin-left:5px;
 }
-#invitedList span{
+
+#guestnames span{
 	font-family: "Playfair Display", Garamond, Cambria, serif;
 	font-style: italic;
 	font-size:1.3em;
 }
-#invitedList label{
+
+#guestnames label{
 	margin: 8px;
 	font-style: italic;
 }
-#invitedList input{
+
+#guestnames input{
 	margin-left:3px;
 }
-#inveitedList li button{
+
+#guestnames li button{
 	text-transform: capitalize;
 	margin: 3px;
 	border-radius: 5px;
@@ -446,12 +454,67 @@ p{
 	font-family: "Playfair Display", Garamond, Cambria, serif;
 	font-size:0.8em;
 	color: #ccc;
-	background-color: rgb(226,226,226)
+	background-color: rgb(226,226,226);
 }
+
+.guest-wrapper {
+	width: 90%;
+	height: 100%;
+	margin: 20% 0 0 0;
+	padding: 0;
+}
+
+#invitedList {
+	display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+
 
 
 /* About Us Page */
 /*----------------------------------------------------------------------------------*/
+.about-text {
+	padding-top: 5%;
+}
+
+.about-wrapper {
+	display: flex;
+}
+
+.about-item {
+	flex-grow: 1;
+}
+
+.about-item + .about-item {
+	margin-left: 10%;
+}
+
+.about-item:nth-child(1) {
+	margin: 0 10% 5% 0 ;
+	padding: 0;
+	width: 40%;
+}
+
+.about-item:nth-child(2) {
+	margin: 0;
+	padding: 0;
+	width: 30%;
+}
+
+.about-item .about-wrapper {
+	width: 40%;
+}
+
+
+
+
+
 
 /* Contact Page */
 /*----------------------------------------------------------------------------------*/
@@ -491,7 +554,7 @@ p{
 }
 
 .contact-btn {
-	background: #e47375;
+	background:rgb(201, 83, 85);
 	color:#ffffff;
 	text-align: center;
 	padding: 10px 20px;

@@ -25,49 +25,50 @@
 		
 		<div class="section-content">
 			<div id="checklist">
+			
+				<ul class="todo-list js-todo-list"></ul>
+				<!-- add the empty state here -->
+				<div class="empty-state">
+					<h2 class="empty-state__title">Add your first todo</h2>
+					<p class="empty-state__description">What do you want to get done?</p>
+				</div>
+				<!-- end -->
 		
-			<ul class="todo-list js-todo-list"></ul>
-    <!-- add the empty state here -->
-    <div class="empty-state">
+				<form class="todo-form js-form">
+					<input autofocus type="text" aria-label="Enter a new todo item" placeholder="E.g. Buy some flowers" class="js-todo-input">
+				</form>
 	
-      <h2 class="empty-state__title">Add your first todo</h2>
-      <p class="empty-state__description">What do you want to get done?</p>
-    </div>
-    <!-- end -->
-    <form class="todo-form js-form">
-      <input autofocus type="text" aria-label="Enter a new todo item" placeholder="E.g. Buy some flowers" class="js-todo-input">
-    </form>
 			</div>
 	   	</div>
 
 	</li>
 	
-	<li class="active"><div class="section-title"><h3>Guestlist</h3></div>
-	    	
+	<li class="active"><div class="section-title"><h3>Guestlist</h3></div>  	
 	    <div class="section-content">			
-	<div class="wrapper">
-    <header>
-	  
-      <form id="registrar">
-        <input type="text" name="name" placeholder="Invite Someone">
-        <button type="submit" name="submit" value="submit">Submit</button>
-      </form>
-</header>
-		<h2>Invitees</h2>
-	  <div class="main" style="height:500px;overflow-y:auto">
-	  <ul id="invitedList" style="display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;"></ul>
-    </div>
-  </div>
-
-
-	</li>
+			<div class="guest-wrapper">
 	
+				<h2>Invitees</h2>
+
+				<div id="guest-header">
+					<form id="registrar">
+						<input type="text" name="name" placeholder="Invite Someone">
+						<button type="submit" name="submit" value="submit">Submit</button>
+					</form>
+				</div>
+
+				<div class="guestlist" style="height:70%;overflow-y:auto">
+					<ul id="guestnames" style="display: block;
+						list-style-type: disc;
+						margin-block-start: 1em;
+						margin-block-end: 1em;
+						margin-inline-start: 0px;
+						margin-inline-end: 0px;
+						padding-inline-start: 40px;"></ul>
+				</div>
+			  </div>
+		</div>
+	</li>
+
 	<li><div class="section-title"><h3>Trends</h3></div>
 
 		<div class="section-content">
