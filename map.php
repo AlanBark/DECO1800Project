@@ -32,13 +32,13 @@
 
         <div id="map-filter-section">
 
-            <button class="map-accordion">Date</button>
+            <button class="map-accordion">Month</button>
             
             <div class="panel">
                 <div id="range-container">
                     <button class="month-btn summer" id="0" data-toggle="tooltip" data-trigger="hover" title="January"><i class="fas fa-tree" id="0"></i></button>
                     <button class="month-btn summer" id="1" data-toggle="tooltip" data-trigger="hover" title="February"><i class="fas fa-tree" id="1"></i></button>
-                    <button class="month-btn autumn" id="2" data-toggle="tooltip" data-trigger="hover" title="March"><i class="fas fa-tree" id="2"></i></button>
+                    <button class="month-btn autumn selected" id="2" data-toggle="tooltip" data-trigger="hover" title="March"><i class="fas fa-tree" id="2"></i></button>
                     <button class="month-btn autumn" id="3" data-toggle="tooltip" data-trigger="hover" title="April"><i class="fas fa-tree" id="3"></i></button>
                     <button class="month-btn autumn" id="4" data-toggle="tooltip" data-trigger="hover" title="May"><i class="fas fa-tree" id="4"></i></button>
                     <button class="month-btn winter" id="5" data-toggle="tooltip" data-trigger="hover" title="June"><i class="fas fa-tree" id="5"></i></button>
@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <button class="map-accordion">Weather</button>
+            <button class="map-accordion">More Information</button>
 
             <div class="panel">
             <p>Weather stuff</p>
@@ -104,8 +104,6 @@
 
     </div>
     <script>
-        addMonthButtons();
-        updateMonthOffset(2);
         startMap(map);
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
