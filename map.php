@@ -75,7 +75,9 @@
             <button class="map-accordion">More Information</button>
 
             <div class="panel">
-            <p>Weather stuff</p>
+            <p class="more-info">Average weddings are the mean amount of annual weddings for that suburb.</p>
+            <p class="more-info">The popularity index is calculated by finding the ratio of that subrubs weddings compared to the mean, offset by the monthly ratio of weddings compared to the mean.</p>
+            <p class="more-info">This can give a rough price index, calculated using the average real cost of a wedding and offsetting that by the price index</p> 
             </div>
 
             <script>
@@ -110,6 +112,7 @@
     </div>
     <script>
         startMap(map);
+        // enable all tooltips
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });

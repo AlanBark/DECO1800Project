@@ -289,8 +289,6 @@ https://zhuanlan.zhihu.com/p/40516156
     background:#fff;
 }
 
-
-
 .slideshow-info {
 	margin: 3% 0 0 0;
 	position: absolute;
@@ -508,6 +506,10 @@ https://zhuanlan.zhihu.com/p/40516156
 
 .active:after {
     transform: rotate(-90deg);
+}
+
+.more-info {
+    font-size: 12px;
 }
 
 .panel select {
