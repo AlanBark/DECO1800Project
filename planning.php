@@ -29,15 +29,22 @@
 				<ul class="todo-list js-todo-list"></ul>
 				<!-- add the empty state here -->
 				<div class="empty-state">
-					<h2 class="empty-state__title">Add your first todo</h2>
+					<h2 class="empty-state__title">Your first todo</h2>
 					<p class="empty-state__description">What do you want to get done?</p>
+					<div class="boxes">
+						<input type="checkbox" id="box-1">
+						<label for="box-1">Choose a perfect spot to take photo </label>
+
+						<input type="checkbox" id="box-2" checked>
+						<label for="box-2">Choose the best venue for wedding through using the mapping tool</label>
+
+						<input type="checkbox" id="box-3">
+						<label for="box-3">Feel relaxed to enjoy wedding</label>
+					</div>
 				</div>
 				<!-- end -->
 		
-				<form class="todo-form js-form">
-					<input autofocus type="text" aria-label="Enter a new todo item" placeholder="E.g. Buy some flowers" class="js-todo-input">
-				</form>
-	
+				
 			</div>
 	   	</div>
 
