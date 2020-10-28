@@ -4,7 +4,7 @@
 <head>
 	<?php include("includes/header.php");?>
 	<script type='text/javascript' src='js/guestlist.js'></script>
-	<script type='text/javascript' src='js/checklist.js'></script>
+
 
 </head>
 <body>
