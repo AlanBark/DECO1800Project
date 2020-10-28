@@ -32,14 +32,24 @@
 					<h2 class="empty-state__title">Your first todo</h2>
 					<p class="empty-state__description">What do you want to get done?</p>
 					<div class="boxes">
-						<input type="checkbox" id="box-1">
-						<label for="box-1">Choose a perfect spot to take photo </label>
 
-						<input type="checkbox" id="box-2" checked>
-						<label for="box-2">Choose the best venue for wedding through using the mapping tool</label>
+						<input type="checkbox" id="box-1">
+						<label for="box-1">Discuss your ideal wedding with your other half </label>
+
+						<input type="checkbox" id="box-2">
+						<label for="box-2">Draw up a budget </label>
 
 						<input type="checkbox" id="box-3">
-						<label for="box-3">Feel relaxed to enjoy wedding</label>
+						<label for="box-3">Start planning the guestlist with the Guestlist tool </label>
+
+						<input type="checkbox" id="box-4">
+						<label for="box-4">Pick potential wedding dates </label>
+
+						<input type="checkbox" id="box-5" checked>
+						<label for="box-5">Choose the venue for wedding through using the mapping tool</label>
+
+						<input type="checkbox" id="box-6">
+						<label for="box-6">Feel relaxed to enjoy wedding</label>
 					</div>
 				</div>
 				<!-- end -->
