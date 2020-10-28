@@ -27,7 +27,7 @@
 			<div id="checklist">
 			
 				<ul class="todo-list js-todo-list"></ul>
-				<!-- add the empty state here -->
+				<!-- box code insired by https://codepen.io/valerypatorius/pen/oXGMGL/ --> -->
 				<div class="empty-state">
 					<h2 class="empty-state__title">Your first todo</h2>
 					<p class="empty-state__description">What do you want to get done?</p>
