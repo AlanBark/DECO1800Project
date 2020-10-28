@@ -756,7 +756,7 @@ https://zhuanlan.zhihu.com/p/40516156
 .boxes {
 	margin: auto;
 	padding: 50px;
-	
+	overflow-y: auto;
   }
   
   /*Checkboxes styles*/
