@@ -761,6 +761,7 @@ https://zhuanlan.zhihu.com/p/40516156
   
   /*Checkboxes styles*/
   input[type="checkbox"] { display: none; }
+  .guestlist input[type="checkbox"] { display: unset; }
   
   input[type="checkbox"] + label {
 	display: block;
